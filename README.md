@@ -115,12 +115,12 @@
 
 **_17.How do you schedule tasks periodically?_**
 
-You can use the commands `cron` and `at`. With cron, tasks are scheduled using the following format:
+- You can use the commands `cron` and `at`. With cron, tasks are scheduled using the following format:
 
-`*/30 * * * * bash myscript.sh` Executes the script every 30 minutes.
+- `*/30 * * * * bash myscript.sh` Executes the script every 30 minutes.
 
-The tasks are stored in a cron file, you can write in it using `crontab -e`
+- The tasks are stored in a cron file, you can write in it using `crontab -e`
 
-Alternatively if you are using a distro with systemd it's recommended to use systemd timers.
+- Alternatively if you are using a distro with systemd it's recommended to use systemd timers.
 
 ## I/O Redirection
