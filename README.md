@@ -124,3 +124,35 @@
 - Alternatively if you are using a distro with systemd it's recommended to use systemd timers.
 
 ## I/O Redirection
+
+**_18.Explain Linux I/O redirection_**
+
+- In Linux, IO redirection is a way of changing the default input/output behavior of a command or program. It allows you to redirect input and output from/to different sources/destinations, such as files, devices, and other commands.
+
+- Here are some common examples of IO redirection:
+  - Redirecting Standard Output (stdout): `ls > filelist.txt`
+  - Redirection Standard Error (stderr): `ls /some/nonexistent/directory 2> error.txt`
+  - Appending to a file: `echo "hello" >> myfile.txt`
+  - Redirecting Input (stdin): `sort < unsorted.txt`
+  - Using Pipes: Pipes ("|"): `ls | grep ".txt$"`
+
+**_19.Demonstrate Linux output redirection_**
+
+- `ls > ls_output.txt`
+ 
+**_20.Demonstrate Linux stderr output redirection_**
+
+- `yippiekaiyay 2> ls_output.txt`
+ 
+**_21.Demonstrate Linux stderr to stdout redirection_**
+
+- `yippiekaiyay &> file`
+ 
+**_22.What is the result of running the following command? `yippiekaiyay 1>&2 die_hard`_**
+
+- An output similar to: `yippikaiyay: command not found...`
+- The file `die_hard` will not be created
+
+
+
+
