@@ -264,6 +264,56 @@
 
 - `mkpasswd -l 7`
 
+## Systemd
+
+**_45.What is systemd?_**
+
+- Systemd is a daemon (System 'd', d stands for daemon).
+
+- A daemon is a program that runs in the background without direct control of the user, although the user can at any time talk to the daemon.
+
+**_46.How to start or stop a service?_**
+
+- To start a service: `systemctl start <service name>`
+- To stop a service: `systemctl stop <service name>`
+
+**_47.How to check the status of a service?_**
+
+- `systemctl status <service name>`
+
+**_48.On a system which uses systemd, how would you display the logs?_**
+
+- `journalctl`
+
+**_49.Describe how to make a certain process/app a service_**
+
+- Create a new file with a .service extension in /etc/systemd/system/.
+  - For example, my-app.service.
+    - `sudo nano /etc/systemd/system/my-app.service`
+   
+- Populate the .service file with the necessary configurations. A basic unit file includes:
+  - [Unit]
+  - Description=My Custom Application Service
+  - After=network.target
+
+  - [Service]
+  - ExecStart=/path/to/your/application/executable
+  - WorkingDirectory=/path/to/your/application/directory
+  - User=your_username
+  - Restart=always
+  - RestartSec=5
+ 
+  - [Install]
+  - WantedBy=multi-user.target
+
+
+
+
+
+
+
+
+
 
 
 
