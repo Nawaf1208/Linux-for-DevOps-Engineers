@@ -1,4 +1,4 @@
-# Linux-Questions
+# Linux Q & A
 
 ## Linux 101
 
