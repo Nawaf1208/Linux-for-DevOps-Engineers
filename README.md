@@ -392,6 +392,81 @@
 - Run `lsof <FILE_PATH>`
 - Use the pid (process ID) from the lsof command and run `kill <PID>`
 
+## Kernel
+
+**_62.What is a kernelm and what does it do?_**
+
+- The kernel is part of the operating system and is responsible for tasks like:
+  - Allocating memory
+  - Schedule processes
+  - Control CPU
+ 
+**_63.How do you find out which Kernel version your system is using?_**
+
+- `uname -a` command
+
+**_64.What is a Linux kernel module and how do you load a new module?_**
+
+- A Linux kernel module is a piece of code that can be dynamically loaded into the kernel to extend its functionality. These modules are typically used to add support for hardware devices, filesystems, or system calls. The kernel itself is monolithic, but with modules, its capabilities can be extended without having to reboot the system or recompile the entire kernel.
+
+**_65.Explain user space vs. kernel space_**
+
+- The operating system executes the kernel in protected memory to prevent anyone from changing (and risking it crashing). This is what is known as "Kernel space". "User space" is where users executes their commands or applications. It's important to create this separation since we can't rely on user applications to not tamper with the kernel, causing it to crash.
+
+**_66.In what phases of kernel lifecycle, can you change its configuration?_**
+
+- Build time (when it's compiled)
+- Boot time (when it starts)
+- Runtime (once it's already running)
+
+**_67.Where can you find kernel's configuration?_**
+
+- Usually it will reside in `/boot/config-<kernel version>.<os release>.<arch>`
+
+**_68.Where can you find the file that contains the command passed to the boot loader to run the kernel?_**
+
+- `/proc/cmdline`
+
+**_69.How to list kernel's runtime parameters?_**
+
+- `sysctl -a`
+
+**_70.Will running sysctl -a as a regular user vs. root, produce different result?_**
+
+- Yes, you might notice that in most systems, when running `systctl -a` with root, you'll get more runtime parameters compared to executing the same command with a regular user.
+
+**_71.You would like to enable IPv4 forwarding in the kernel, how would you do it?_**
+
+- `sudo sysctl net.ipv4.ip_forward=1`
+
+- To make it persistent (applied after reboot for example): insert `net.ipv4.ip_forward = 1` into `/etc/sysctl.conf`
+
+- Another way to is to run `echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward`
+
+**_72.How `sysctl` applies the changes to kernel's runtime parameters the moment you run sysctl command?_**
+
+- If you `strace` the sysctl command you can see it does it by changing the file under /proc/sys/...
+
+- In the past it was done with sysctl system call, but it was deprecated at some point.
+
+**_73.How changes to kernel runtime parameters persist? (applied even after reboot to the system for example)_**
+
+- There is a service called `systemd-sysctl` that takes the content of `/etc/sysctl.conf` and applies it. This is how changes persist, even after reboot, when they are written in `/etc/sysctl.conf`
+
+**_74.Are the changes you make to kernel parameters in a container, affects also the kernel parameters of the host on which the container runs?_**
+
+- No. Containers have their own `/proc` filesystem so any change to kernel parameters inside a container, are not affecting the host or other containers running on that host.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
