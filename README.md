@@ -590,3 +590,28 @@
 - An exit code (or return code) represents the code returned by a child process to its parent process.
 - 0 is an exit code which represents success while anything higher than 1 represents error. Each number has different meaning, based on how the application was developed.
 
+## Boot Process
+
+**_93.Tell me everything you know about the Linux boot process._**
+
+- The Linux boot process is a highly choreographed sequence of events that transforms a powered-off computer into a fully operational system, passing control from low-level hardware firmware to the operating system's kernel and finally to user-space applications.
+
+- The process generally involves six major stages: 
+  - 1. BIOS/UEFI (Firmware Initialization)
+  - 2. Bootloader (GRUB)
+  - 3. Kernel Initialization
+  - 4. Initial RAM Disk (initramfs/initrd)
+  - 5. Init Process (systemd)
+    6. User Space and Login Prompt
+
+**_94.What is GRUB2?_**
+
+- GRUB2 (GRand Unified Bootloader version 2) is the standard and default bootloader for nearly all modern Linux distributions. It is the essential software that loads the Linux kernel (and initial RAM disk) into memory and transfers control to it, allowing the operating system to start.
+
+**_95.What is Secure Boot?_**
+
+- Secure Boot is a security standard and feature of the UEFI (Unified Extensible Firmware Interface) firmware designed to protect the computer's boot process from malicious software (like bootkits and rootkits) that tries to load during startup.
+
+**_96.What can you find in /boot?_**
+
+- The `/boot` directory in Linux contains the essential, static files required to start the system. The contents of this directory are read by the bootloader (like GRUB2) before the main operating system's configuration files in `/etc` are accessed.
