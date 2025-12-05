@@ -768,9 +768,138 @@ cat > new_file [enter] submit text; ctrl + d to exit insert mode`
 
 - sar -n TCP,ETCP 1
 
+## Processes
 
+**_125.How to list all the processes running in your system?_**
 
+- The "`ps`" command can be used to list all the processes running in a system. The "`ps aux`" command provides a detailed list of all the processes, including the ones running in the background.
 
+**_126.How to run a process in the background and why to do that in the first place?_**
+
+- You can achieve that by specifying & at the end of the command. As to why, since some commands/processes can take a lot of time to finish execution or run forever, you may want to run them in the background instead of waiting for them to finish before gaining control again in current session.
+
+**_127.How can you find how much memory a specific process consumes?_**
+
+- `mem()`
+- `{`
+- `ps -eo rss,pid,euser,args:100 --sort %mem | grep -v grep | grep -i $@ | awk '{printf $1/1024 "MB"; $1=""; print }'`
+- `}`
+
+**_128.What signal is used by default when you run 'kill *process id*'?_**
+
+- The default signal is SIGTERM (15). This signal kills process gracefully which means it allows it to save current state configuration.
+
+**129.What signals are you familiar with?_**
+
+- SIGTERM -> default signal for terminating a process
+- SIGHUP -> common usage is for reloading configuration
+- SIGKILL -> a signal which cannot caught or ignored
+- To view all available signals run `kill -l`
+
+**_130.What kill 0 does?_**
+
+- "`kill 0`" sends a signal to all processes in the current process group. It is used to check if the processes exist or not
+
+**_131.What kill -0  does?_**
+
+- "`kill -0`" checks if a process with a given process ID exists or not. It does not actually send any signal to the process.
+
+**_132.What is a trap?_**
+
+- A trap is a mechanism that allows the shell to intercept signals sent to a process and perform a specific action, such as handling errors or cleaning up resources before terminating the process.
+
+**_133.Every couple of days, a certain process stops running. How can you look into why it's happening?_**
+
+- One way to investigate why a process stops running is to check the system logs, such as the messages in `/var/log/messages` or `journalctl`. Additionally, checking the process's resource usage and system load may provide clues as to what caused the process to stop.
+
+**_134.What happens when you press ctrl + c?_**
+
+- When you press "Ctrl+C," it sends the SIGINT signal to the foreground process, asking it to terminate gracefully.
+
+**_135.What is a Daemon in Linux?_**
+
+- A background process. Most of these processes are waiting for requests or set of conditions to be met before actually running anything. Some examples: sshd, crond, rpcbind.
+
+**_136.What are the possible states of a process in Linux?_**
+
+- `Running (R)`
+- `Uninterruptible Sleep (D)` - The process is waiting for I/O
+- `Interruptible Sleep (S)`
+- `Stopped (T)`
+- `Dead (x)`
+- `Zombie (z)`
+
+**_137.How do you kill a process in D state?_**
+
+- A process in D state (also known as "uninterruptible sleep") cannot be killed using the "kill" command. The only way to terminate it is to reboot the system.
+
+**_138.What is a zombie process?_**
+
+- A process which has finished to run but has not exited.
+
+- One reason it happens is when a parent process is programmed incorrectly. Every parent process should execute wait() to get the exit code from the child process which finished to run. But when the parent isn't checking for the child exit code, the child process can still exists although it finished to run.
+
+**_139.How to get rid of zombie processes?_**
+
+- You can't kill a zombie process the regular way with kill -9 for example as it's already dead.
+- One way to kill zombie process is by sending SIGCHLD to the parent process telling it to terminate its child processes. This might not work if the parent process wasn't programmed properly. The invocation is kill -s SIGCHLD [parent_pid]
+- You can also try closing/terminating the parent process. This will make the zombie process a child of init (1) which does periodic cleanups and will at some point clean up the zombie process.
+
+**_140.How to find all the_**
+**_Processes executed/owned by a certain user_** -> `ps -u [username]`
+**_Process which are Java processes_** -> `ps -ef | grep java`
+**_Zombie Processes_** -> `ps -eAo stat,pid,comm | grep -w Z`
+
+**_141.What is the init process?_**
+
+- It is the first process executed by the kernel during the booting of a system. It is a daemon process which runs till the system is shutdown. That is why, it is the parent of all the processes
+
+**_142.Can you describe how processes are being created?_**
+
+- The process creation mechanism is fundamentally based on a two-step procedure involving the fork() and exec() system calls, known as the fork-exec model.
+
+**_143.How to change the priority of a process? Why would you want to do that?_**
+
+- To change the priority of a process, you can use the nice command in Linux. The nice command allows you to specify the priority of a process by assigning a priority value ranging from -20 to 19. A higher value of priority means lower priority for the process, and vice versa.
+- You may want to change the priority of a process to adjust the amount of CPU time it is allocated by the system scheduler. For example, if you have a CPU-intensive process running on your system that is slowing down other processes, you can lower its priority to give more CPU time to other processes.
+
+**_144.Can you explain how network process/connection is established and how it's terminated?_**
+
+- When a client process on one system wants to establish a connection with a server process on another system, it first creates a socket using the socket system call. The client then calls the connect system call, passing the address of the server as an argument. This causes a three-way handshake to occur between the client and server, where the two systems exchange information to establish a connection.
+Once the connection is established, the client and server can exchange data using the read and write system calls. When the connection is no longer needed, the client or server can terminate the connection by calling the close system call on the socket.
+
+**_145.What `strace` does? What about `ltrace`?_**
+
+- `Strace` is a debugging tool that is used to monitor the system calls made by a process. It allows you to trace the execution of a process and see the system calls it makes, as well as the signals it receives. This can be useful for diagnosing issues with a process, such as identifying why it is hanging or crashing.
+- `Ltrace`, on the other hand, is a similar tool that is used to trace the library calls made by a process. It allows you to see the function calls made by a process to shared libraries, as well as the arguments passed to those functions. This can be useful for diagnosing issues with a process that involve library calls, such as identifying why a particular library is causing a problem.
+
+**_146.Find all the files which end with '.yml' and replace the number 1 in 2 in each file_**
+
+- find /some_dir -iname *.yml -print0 | xargs -0 -r sed -i "s/1/2/g"
+
+**_147.You run ls and you get "/lib/ld-linux-armhf.so.3 no such file or directory". What is the problem?_**
+
+- The ls executable is built for an incompatible architecture.
+
+**_148.How would you split a 50 lines file into 2 files of 25 lines each?_**
+
+- You can use the `split` command this way: `split -l 25 some_file`
+
+**_149.What is a kerberos file descriptor? What file descriptors are you familiar with?_**
+
+- Kerberos File descriptor, also known as file handler, is a unique number which identifies an open file in the operating system.
+In Linux (and Unix) the first three file descriptors are:
+  - 0 - the default data stream for input
+  - 1 - the default data stream for output
+  - 2 - the default data stream for output related to errors
+
+**_150.What is NTP? What is it used for?_**
+
+- NTP stands for Network Time Protocol. It is a networking protocol used for clock synchronization between computer systems over packet-switched, variable-latency data networks, like the internet. In simpler terms, it's a way for your Linux machine (or any networked device) to get the correct time from a highly accurate source.
+
+**_151.Explain Kernel OOM._**
+
+- The Kernel OOM (Out-of-Memory) Killer is a crucial, last-resort mechanism in the Linux kernel designed to maintain system stability when the available physical RAM and swap space have been exhausted. Due to Linux's default policy of memory overcommit (where the kernel allows processes to request more memory than is physically available), it's possible for the system to run into a critical situation where a legitimate memory request cannot be fulfilled.
 
 
 
