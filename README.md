@@ -901,7 +901,57 @@ In Linux (and Unix) the first three file descriptors are:
 
 - The Kernel OOM (Out-of-Memory) Killer is a crucial, last-resort mechanism in the Linux kernel designed to maintain system stability when the available physical RAM and swap space have been exhausted. Due to Linux's default policy of memory overcommit (where the kernel allows processes to request more memory than is physically available), it's possible for the system to run into a critical situation where a legitimate memory request cannot be fulfilled.
 
+## Security
 
+**_152.What is chroot? In what scenarios would you consider using it?_**
+
+- Chroot, short for "change root," is a command and system call in Linux that changes the apparent root directory (/) for the currently running process and all its children. This action creates a restricted environment, often called a chroot jail, where the processes running inside cannot access or name files outside of the newly defined directory structure. Essentially, the processes are isolated and tricked into believing that the new directory is the topmost level of the file system. While this provides a form of basic sandboxing, it does not provide full security isolation on its own, as a process with root privileges can potentially escape the jail.
+
+- The chroot utility is primarily used in scenarios requiring isolation, system recovery, or clean building environments. Common uses include system maintenance and repair, such as when a Linux system fails to boot: an administrator can boot from a live USB, mount the damaged system's partitions, and then use chroot to step into that broken environment to safely reinstall a bootloader or reset a forgotten password. It is also used for security sandboxing by restricting network services (like FTP or DNS daemons) to a limited part of the file system to contain the damage if the service is compromised. Furthermore, developers use it to build software packages in a clean environment that only contains the necessary dependencies, preventing unintended conflicts with the host system.
+
+**_153.What is SELiunx?_**
+
+- SELinux (Security-Enhanced Linux) is a Linux kernel security module that provides a mechanism for supporting Mandatory Access Control (MAC) security policies. It was originally developed by the U.S. National Security Agency (NSA) and integrated into the Linux kernel using the Linux Security Modules (LSM) framework. Its primary purpose is to add a crucial, fine-grained layer of security that operates in addition to the traditional Linux Discretionary Access Control (DAC), which is the standard owner/group/world read/write/execute permissions.
+
+**_154.What is Kerberos?_**
+
+- Kerberos is a network authentication protocol that uses symmetric-key cryptography to provide strong mutual authentication for client-server applications over non-secure networks. It was developed at MIT and is designed to eliminate the transmission of unencrypted passwords across the network. Instead of passwords, Kerberos uses temporary, encrypted credentials called tickets to prove the identity of both the user and the service. This is the foundation for providing a Single Sign-On (SSO) experience in a Linux or Unix network environment, allowing users to log in once and access multiple services without re-entering credentials.
+
+**_155.What is nftables?_**
+
+- nftables is the modern, flexible packet filtering framework that replaced the aging iptables in the Linux kernel. It is integrated with the Netfilter project and provides a more efficient, unified, and scalable approach to managing firewall rules.
+
+**_156.What firewalld daemon is responsible for?_**
+
+- The firewalld daemon is the dynamic firewall management service that acts as the primary network defense mechanism on many modern Linux distributions (like Fedora, CentOS/RHEL, and recent Debian/Ubuntu versions). Its main responsibility is to provide a user-friendly, dynamic, and rule-set-independent interface for configuring the underlying kernel packet filtering facilities (Netfilter, which may use iptables or nftables as the backend).
+
+**_157.Do you have experience with hardening servers? Can you describe the process?_**
+
+- Yes, I have extensive knowledge of server hardening best practices in a Linux environment. Hardening is a systematic process of increasing a server's security posture by reducing its attack surface, eliminating unnecessary functionality, and strengthening configurations.
+
+- The process is generally divided into several key phases
+  - 1.`Baseline & Preparation` -> Establish a secure starting point, document the current configuration, and ensure all systems are up-to-date.
+  - 2.`Reduce Attack Surface` - > Remove unnecessary software and services to minimize potential entry points for attackers.
+  - 3.`Account & Authentication` -> Implement strong controls over user access and authentication mechanisms.
+  - 4.`Kernel & System Security` -> Configure kernel parameters and security modules to defend against exploits.
+  - 5.`Network & Firewall` -> Implement robust filtering and monitoring of all network traffic.
+  - 6.`Logging & Auditing` -> Ensure all significant security events are logged, and implement regular reviews.
+    
+**_158.How do you create a private key for a CA (certificate authority)?_**
+
+- One way is using openssl this way:
+  - `openssl genrsa -aes256 -out ca-private-key.pem 4096`
+ 
+**_159.How do you create a public key for a CA (certificate authority)?_**
+
+- `openssl req -new -x509 -days 730 -key [private key file name] -sha256 -out ca.pem`
+
+- If using the private key from the previous question then the command would be:
+  - `openssl req -new -x509 -days 730 -key ca-private-key.pem -sha256 -out ca.pem`
+ 
+**_160.Demonstrate one way to encode and decode data in Linux_**
+
+- Encode: `echo -n "some password" | base64` Decode: `echo -n "allE19remO91" | base64`
 
 
 
