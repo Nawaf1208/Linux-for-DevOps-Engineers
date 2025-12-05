@@ -1159,4 +1159,46 @@ Here the connection name is "System ens5". Let's say we want to modify settings 
 - Package managers allow you to manage packages lifecycle as in installing, removing and updating the packages.
 - In addition, you can specify in a spec how a certain package will be installed - where to copy the files, which commands to run prior to the installation, post the installation, etc.
 
+## DNF
+
+**_193.What is DNF?_**
+
+- "Dandified YUM (DNF) is the next upcoming major version of YUM. It does package management using RPM, libsolv and hawkey libraries."
+
+**_194.How to look for a package that provides the command /usr/bin/git? (the package isn't necessarily installed)_**
+
+- dnf provides /usr/bin/git
+
+## Applications & Services
+
+**_195.What can you find in /etc/services?_**
+
+- The file `/etc/services` is a plain text configuration file in Linux that acts as a local database mapping well-known service names to their corresponding port numbers and transport protocols (TCP or UDP).
+
+**_196.How to make sure a Service starts automatically after a reboot or crash?_**
+
+- Depends on the init system.
+
+- Systemd:  `systemctl enable [service_name]`  System V:  `update-rc.d [service_name]`  and add this line  `id:5678:respawn:/bin/sh /path/to/app`  to `/etc/inittab` Upstart: add Upstart init script at /etc/init/service.conf
+
+**_197.You run ssh 127.0.0.1 but it fails with "connection refused". What could be the problem?_**
+
+- 1.SSH server is not installed
+- 2.SSH server is not running
+
+**_198.How to print the shared libraries required by a certain program? What is it useful for?_**
+
+- To print the shared libraries required by a certain program in Linux, you use the ldd command (List Dynamic Dependencies).
+
+- The `ldd` command is useful for troubleshooting program startup failures caused by missing dependencies and for verifying that the correct library versions are being linked. It is essential when building minimal container images or creating isolated chroot environments, as it defines the exact set of external files required for the application to run.
+
+**_199.What is CUPS?_**
+
+- CUPS stands for Common Unix Printing System. It is a modular printing system that allows a computer running Linux to act as a print server. It is the standard printing service used by nearly all modern Linux distributions.
+
+**_200.What types of web servers are you familiar with?_**
+
+- Nginx, Apache httpd.
+
+
 
