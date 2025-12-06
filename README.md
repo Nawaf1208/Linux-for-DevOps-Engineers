@@ -1354,3 +1354,62 @@ Here the connection name is "System ens5". Let's say we want to modify settings 
 **_225.What time namespaces are used for?_**
 
 - In time namespaces processes can use different system time.
+
+## Virtualization
+
+**_226.What virtualization solutions are available for Linux?_**
+
+- KVM
+- XEN
+- VirtualBox
+- Linux-VServer
+- User-mode Linux
+
+**_227.What is KVM?_**
+
+- Is an open source virtualization technology used to operate on x86 hardware.
+
+**_228.What is Libvirt?_**
+
+- It's an open source collection of software used to manage virtual machines. It can be used with: KVM, Xen, LXC and others. It's also called Libvirt Virtualization API.
+
+## AWK
+
+**_229.What the awk command does? Have you used it? What for?_**
+
+- From Wikipedia: "AWK is domain-specific language designed for text processing and typically used as a data extraction and reporting tool"
+
+**_230.How to print the 4th column in a file?_**
+
+- `awk '{print $4}'` file
+
+**_231.How to print every line that is longer than 79 characters?_**
+
+- `awk 'length($0) > 79'` file
+
+**_232.What the lsof command does? Have you used it? What for?_**
+
+- The lsof command in Unix-like operating systems stands for "LiSt Open Files." Its primary function is to report a comprehensive list of all files that are currently open by active processes on the system.
+
+- I have used `lsof` for powerful troubleshooting and system monitoring
+
+- Used it for:
+  - Finding which process is using a file
+  - Identifying network connections and ports
+  - Listing files opened by a specific user or command
+  - Finding deleting files still held open
+ 
+**_233.What is the difference between find and locate?_**
+
+- Use locate when you need a fast, system-wide search for a file by name and you don't need real-time accuracy (e.g., finding a configuration file you know exists).
+  - Example: `locate httpd.conf`
+- Use find when you need real-time accuracy or when you need to search based on complex criteria other than just the name.
+  - Example : `find /var/log -size +10M -mtime -7`
+ 
+**_234.How a user process performs a privileged operation, such as reading from the disk?_**
+
+- Using system calls
+
+
+
+
