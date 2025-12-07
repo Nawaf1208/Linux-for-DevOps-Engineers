@@ -1410,6 +1410,149 @@ Here the connection name is "System ens5". Let's say we want to modify settings 
 
 - Using system calls
 
+## System Call
 
+**_235.What is a system call? What system calls are you familiar with?_**
 
+- A system call is the programmatic way a computer program requests a service from the operating system kernel.
+
+- Some common Linux system calls are:
+  - Process Control:
+    - `fork()`: Creates a new process (a child process).
+    - `execve()`: Replaces the current process image with a new program.
+    - `wait()`/`wait4()`: Waits for a child process to terminate or stop.
+    - `exit()`: Terminates the calling process.
+    - `getpid()`: Gets the process ID of the current process
+      
+  - File Management (I/O):
+    - `open()`/`openat()`: Opens or creates a file, returning a file descriptor.
+    - `read()`: Reads data from a file descriptor.
+    - `write()`: Writes data to a file descriptor.
+    - `close()`: Closes a file descriptor.
+    - `lseek()`: Changes the file offset (position) of a file descriptor.
+
+  - Memory Management:
+    - `brk()` / `sbrk()`: Changes the program's data segment size (heap allocation).
+    - `mmap()`: Maps files or devices into memory.
+
+  - Device Management / Information:
+    - `ioctl()`: Performs device-specific I/O operations.
+    - `stat()` / `fstat()` / `lstat()`: Gets file or file descriptor metadata (e.g., size, permissions).
+    - `time()` / `gettimeofday()`: Gets the system time.
+   
+**_236.How a program executes a system call?_**
+
+- A program executes a trap instruction. The instruction jump into the kernel while raising the privileged level to kernel space.
+- Once in kernel space, it can perform any privileged operation
+- Once it's finished, it calls a "return-from-trap" instruction which returns to user space while reducing back the privilege level to user space.
+
+**_237.Explain the fork() system call._**
+
+- `fork()` is used for creating a new process. It does so by cloning the calling process but the child process has its own PID and any memory locks, I/O operations and semaphores are not inherited.
+
+**_238.What is the return value of fork()?_**
+
+- On success, the PID of the child process in parent and 0 in child process
+- On error, -1 in the parent
+
+**_239.Name one reason for fork() to fail._**
+
+- Not enough memory to create a new process
+
+**_240.Why do we need the wait() system call?_**
+
+- `wait()` is used by a parent process to wait for the child process to finish execution. If wait is not used by a parent process then a child process might become a zombie process.
+
+**_241.How the kernel notifies the parent process about child process termination?_**
+
+- The kernel notifies the parent by sending the SIGCHLD to the parent.
+
+**_242.How the waitpid() is different from wait()?_**
+
+- The `waitpid()` is a non-blocking version of the wait() function.
+- It also supports using library routine (e.g. `system()`) to wait a child process without messing up with other children processes for which the process has not waited.
+
+**_243.True or False? The wait() system call won't return until the child process has run and exited._**
+
+- True in most cases though there are cases where wait() returns before the child exits.
+
+**_244.Explain the exec() system call._**
+
+- It transforms the current running program into another program.
+- Given the name of an executable and some arguments, it loads the code and static data from the specified executable and overwrites its current code segment and current static code data. After initializing its memory space (like stack and heap) the OS runs the program passing any arguments as the argv of that process.
+
+**_245.True or False? A successful call to exec() never returns._**
+
+- True
+- Since a successful exec replace the current process, it can't return anything to the process that made the call.
+
+**_246.What system call is used for listing files?_**
+
+- There is no single system call that directly returns a list of files.
+
+- Listing files (reading directory contents) is typically accomplished in Linux using a sequence of operations based on these system calls:
+  - `open()` or `openat()`: Opens the directory, returning a file descriptor.
+  - `getdents()` (Get Directory Entries): This is the primary system call used to read raw directory entries from the file descriptor obtained in step 1.
+  - close(): Closes the directory file descriptor.
+
+- In standard C programming, the `readdir()` function (part of the C library) is the wrapper that internally uses the `getdents()` system call to read and format the directory information for the user program.
+
+**_247.What system calls are used for creating a new process?_**
+
+- `fork()`, `exec()` and the `wait()` system call is also included in this workflow.
+
+**_248.What execve() does?_**
+
+- Executes a program. The program is passed as a filename (or path) and must be a binary executable or a script.
+
+**_249.What is the return value of malloc?_**
+
+- The return value of `malloc()` is a pointer of type `void*` (a "pointer to void").
+  - This pointer points to the beginning of the block of newly allocated, uninitialized memory on the heap.
+  - The `void*` type indicates that it's a generic pointer; it must be cast to the appropriate data type before being used (e.g., to `int*` or `struct Node*`).
+- On Failure:
+- If the requested memory allocation fails (e.g., due to insufficient memory), `malloc()` returns a null pointer ($\text{NULL}$). Always check for a $\text{NULL}$ return value.
+
+**_250.Explain the pipe() system call. What does it used for?_**
+
+- "Pipes provide a unidirectional interprocess communication channel. A pipe has a read end and a write end. Data written to the write end of a pipe can be read from the read end of the pipe. A pipe is created using pipe(2), which returns two file descriptors, one referring to the read end of the pipe, the other referring to the write end."
+
+**_251.What happens when you execute `ls -l`?_**
+
+- Shell reads the input using getline() which reads the input file stream and stores into a buffer as a string
+- The buffer is broken down into tokens and stored in an array this way: {"ls", "-l", "NULL"}
+- Shell checks if an expansion is required (in case of ls *.c)
+- Once the program in memory, its execution starts. First by calling readdir()
+
+- Notes:
+  - `getline()` originates in GNU C library and used to read lines from input stream and stores those lines in the buffer
+ 
+**_252.What happens when you execute ls -l *.log?_**
+
+- When you execute ls -l *.log:
+  - Shell Expansion: The shell (e.g., Bash) first replaces `*.log` with the list of all matching filenames (e.g., `a.log`, `b.log`) in the current directory.
+  - Command Execution: The shell executes the `ls` command with the `-l` (long listing) option and the expanded file list as arguments.
+  - Result: `ls` uses system calls (like `stat()`) to retrieve and print detailed metadata (permissions, size, owner, time) for each file ending in `.log`.
+ 
+**_253.What readdir() system call does?_**
+
+- The function `readdir()` (part of the C standard library, not a direct system call itself) is used to read the contents of a directory.
+
+- It repeatedly calls the underlying  `getdents()` system call to return information about the next file or directory entry (name, inode number, etc.) within a directory stream.
+
+**_254.What exactly the command alias x=y does?_**
+
+- The command `alias x=y` creates a temporary shortcut where the string `x` is replaced with the string `y` by the shell (e.g., Bash) whenever x is executed as the first word of a command.
+  - `x` is the alias name (the new command).
+  - `y` is the replacement string (the actual command or commands to execute).
+
+- This alias only persists for the current shell session.
+
+**_255.Why running a new program is done using the fork() and exec() system calls? why a different API wasn't developed where there is one call to run a new program?_**
+
+- This way provides a lot of flexibility. It allows the shell for example, to run code after the call to `fork()` but before the call to `exec()`. Such code can be used to alter the environment of the program it about to run.
+
+**_256.Describe shortly what happens when you execute a command in the shell._**
+
+- The shell figures out, using the PATH variable, where the executable of the command resides in the filesystem. It then calls `fork()` to create a new child process for running the command. Once the fork was executed successfully, it calls a variant of `exec()` to execute the command and finally, waits the command to finish using `wait()`. When the child completes, the shell returns from `wait()` and prints out the prompt again.
 
