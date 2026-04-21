@@ -6,44 +6,69 @@
 
 ## Linux 101
 
-**_1.What is Linux?_**
+<details>
+<summary><b><i>1.What is Linux?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
   
 - Wikipedia: "Linux is a family of open-source Unix-like operating systems based on the Linux kernel, an operating system kernel first released on September 17, 1991, by Linus Torvalds. Linux is typically packaged in a Linux distribution."
 
 - Red Hat: "Linux® is an open source operating system (OS). An operating system is the software that directly manages a system’s hardware and resources, like CPU, memory, and storage. The OS sits between applications and hardware and makes the connections between all of your software and the physical resources that do the work."
 
-**_2.Explain what each of the following commands does and give an example on how to use it:_**
+</details>
 
-- touch - update file's timestamp. More commonly used for creating files
-- ls - listing files and directories
-- rm - remove files and directories
-- cat - create, view and concatenate files
-- cp - copy files and directories
-- mkdir - create directories
-- pwd - print current working directory (= at what path the user currently located)
-- cd - change directory
+<details>
+<summary><b><i>2.Explain what each of the following commands does and give an example on how to use it:</i></b></summary>
 
-**_3.What each of the following commands does?_**
+$\color{green}{\text{Answer}}$
 
-- cd /  --> change to the root directory
-- cd ~  --> change to your home directory
-- cd    --> change to your home directory
-- cd .. --> change to the directory above your current i.e parent directory
-- cd .  --> change to the directory you currently in
-- cd -  --> change to the last visited path
+- `touch` - update file's timestamp. More commonly used for creating files
+- `ls` - listing files and directories
+- `rm` - remove files and directories
+- `cat` - create, view and concatenate files
+- `cp` - copy files and directories
+- `mkdir` - create directories
+- `pwd` - print current working directory (= at what path the user currently located)
+- `cd` - change directory
 
-**_4.Some of the commands in the previous question can be run with the -r/-R flag. What does it do? Give an example to when you would use it_**
+</details>
 
-- The -r (or -R in some commands) flag allows the user to run a certain command recursively. For example, listing all the files under the following tree is possible when done recursively (`ls -R`):
+<details>
+<summary><b><i>3.What each of the following commands does?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+- `cd /`  --> change to the root directory
+- `cd ~`  --> change to your home directory
+- `cd`    --> change to your home directory
+- `cd ..` --> change to the directory above your current i.e parent directory
+- `cd .`  --> change to the directory you currently in
+- `cd -`  --> change to the last visited path
+
+</details>
+
+<details>
+<summary><b><i>4.Some of the commands in the previous question can be run with the -r/-R flag. What does it do? Give an example to when you would use it.</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+- The `-r` (or -R in some commands) flag allows the user to run a certain command recursively. For example, listing all the files under the following tree is possible when done recursively (`ls -R`):
 
 - /dir1/ dir2/ file1 file2 dir3/ file3
 
 -  To list all the files, one can run `ls -R /dir1`
 
-**_5.Explain each field in the output of `ls -l` command_**
+</details>
+
+<details>
+<summary><b><i>5.Explain each field in the output of `ls -l` command.</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - It shows a detailed list of files in a long format. From the left:
   - file permissions, number of links, owner name, owner group, file size, timestamp of last modification and directory/file name
+
+</details>
  
 **_6.What are hidden files/directories? How to list them?_**
 
