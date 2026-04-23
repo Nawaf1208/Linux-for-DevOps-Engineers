@@ -70,16 +70,29 @@ $\color{green}{\text{Answer}}$
 
 </details>
  
-**_6.What are hidden files/directories? How to list them?_**
+<details>
+<summary><b><i>6.What are hidden files/directories? How to list them?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - These are files directly not displayed after performing a standard ls direct listing. An example of these files are .bashrc which are used to execute some scripts. Some also store configuration about services on your host like .KUBECONFIG. The command used to list them is, `ls -a`
 
-**_7.What do > and < do in terms of input and output for programs?_**
+</details>
+
+<details>
+<summary><b><i>7.What do `>` and `<` do in terms of input and output for programs?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - They take in input (<) and output for a given file (>) using stdin and stdout.
   - `myProgram < input.txt > executionOutput.txt`
+
+</details>
  
-**_8.Explain what each of the following commands does and give an example on how to use it:_**
+<details>
+<summary><b><i>8.Explain what each of the following commands does and give an example on how to use it:</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - sed: a stream editor. Can be used for various purposes like replacing a word in a file:
   - `sed -i s/salad/burger/g`
@@ -94,12 +107,22 @@ $\color{green}{\text{Answer}}$
    
 - awk: a programming language that is mainly used for text processing and data extraction. It can be used to manipulate and modify text in a file:
   - syntax: `awk [OPTIONS] [FILTER] [FILE]` extracting a specific field from a CSV file: `awk -F ',' '{print $1}' file.csv`, output: `first field of each line in the file`
- 
-**_9.How to rename the name of a file or a directory?_**
+
+</details>
+
+<details>
+<summary><b><i>9.How to rename the name of a file or a directory?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - Using the `mv` command.
 
-**_10.Specify which command would you use (and how) for each of the following scenarios_**
+</details>
+
+<details>
+<summary><b><i>10.Specify which command would you use (and how) for each of the following scenarios</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `rm -rf dir` --> Remove a directory with files
 - `cat or less` --> Display the content of a file
@@ -107,31 +130,63 @@ $\color{green}{\text{Answer}}$
 - `cd ~` --> Change working directory to user home directory
 - `sed -i s/good/great/g /tmp/y` --> Replace every occurrence of the word "good" with "great" in the file /tmp/y
 
-**_11.How can you check what is the path of a certain command?_**
+</details>
+
+<details>
+<summary><b><i>11.How can you check what is the path of a certain command?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `whereis`
 - `which`
 
-**_12. What is the difference between these two commands? Will it result in the same output?_**
+</details>
+
+<details>
+<summary><b><i>12. What is the difference between these two commands? Will it result in the same output?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
 - `echo hello world`
 - `echo "hello world"`
 
 - The echo command receives two separate arguments in the first execution and in the second execution it gets one argument which is the string "hello world". The output will be the same.
 
-**_13.Explain piping. How do you perform piping?_**
+</details>
+
+<details>
+<summary><b><i>13.Explain piping. How do you perform piping?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - Using a pipe in Linux, allows you to send the output of one command to the input of another command. For example: `cat /etc/services | wc -l`
 
-**_14.Fix the following commands:_**
+</details>
+
+<details>
+<summary><b><i>14.Fix the following commands:</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
 - sed "s/1/2/g' /tmp/myFile --> `sed 's/1/2/g' /tmp/myFile  # sed "s/1/2/g" is also fine`
 - find . -iname *.yaml -exec sed -i "s/1/2/g" {} ; --> `find . -iname "*.yaml" -exec sed -i "s/1/2/g" {} \;`
 
-**_15.How to check which commands you executed in the past?_**
+</details>
+
+<details>
+<summary><b><i>15.How to check which commands you executed in the past?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - history command or .bash_history file
   - also can use up arrow key to access or to show the recent commands you type
  
-**_16.Running the command `df` you get "command not found". What could be wrong and how to fix it?_**
+</details>
+
+<details>
+<summary><b><i>16.Running the command `df` you get "command not found". What could be wrong and how to fix it?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - Most likely the default/generated $PATH was somehow modified or overridden thus not containing `/bin/` where df would normally go. This issue could also happen if bash_profile or any configuration file of your interpreter was wrongly modified, causing erratics behaviours. You would solve this by fixing your $PATH variable:
 
@@ -142,7 +197,12 @@ $\color{green}{\text{Answer}}$
 
 - Note: There are many ways of getting errors like this: if bash_profile or any configuration file of your interpreter was wrongly modified; causing erratics behaviours, permissions issues, bad compiled software (if you compiled it by yourself)... there is no answer that will be true 100% of the time.
 
-**_17.How do you schedule tasks periodically?_**
+</details>
+
+<details>
+<summary><b><i>17.How do you schedule tasks periodically?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - You can use the commands `cron` and `at`. With cron, tasks are scheduled using the following format:
 
@@ -152,9 +212,14 @@ $\color{green}{\text{Answer}}$
 
 - Alternatively if you are using a distro with systemd it's recommended to use systemd timers.
 
+</details>
+
 ## I/O Redirection
 
-**_18.Explain Linux I/O redirection_**
+<details>
+<summary><b><i>18.Explain Linux I/O redirection</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - In Linux, IO redirection is a way of changing the default input/output behavior of a command or program. It allows you to redirect input and output from/to different sources/destinations, such as files, devices, and other commands.
 
@@ -164,6 +229,8 @@ $\color{green}{\text{Answer}}$
   - Appending to a file: `echo "hello" >> myfile.txt`
   - Redirecting Input (stdin): `sort < unsorted.txt`
   - Using Pipes: Pipes ("|"): `ls | grep ".txt$"`
+
+</details>
 
 **_19.Demonstrate Linux output redirection_**
 
