@@ -232,31 +232,58 @@ $\color{green}{\text{Answer}}$
 
 </details>
 
-**_19.Demonstrate Linux output redirection_**
+<details>
+<summary><b><i>19.Demonstrate Linux output redirection</i></b></summary>
 
-- `ls > ls_output.txt`
- 
-**_20.Demonstrate Linux stderr output redirection_**
+$\color{green}{\text{Answer}}$
 
-- `yippiekaiyay 2> ls_output.txt`
- 
-**_21.Demonstrate Linux stderr to stdout redirection_**
+`ls > ls_output.txt`
 
-- `yippiekaiyay &> file`
+</details>
+
+<details>
+<summary><b><i>20.Demonstrate Linux stderr output redirection</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+`yippiekaiyay 2> ls_output.txt`
+
+</details>
  
-**_22.What is the result of running the following command? `yippiekaiyay 1>&2 die_hard`_**
+<details>
+<summary><b><i>21.Demonstrate Linux stderr to stdout redirection</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+`yippiekaiyay &> file`
+
+</details>
+
+<details>
+<summary><b><i>22.What is the result of running the following command? `yippiekaiyay 1>&2 die_hard`</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - An output similar to: `yippikaiyay: command not found...`
 - The file `die_hard` will not be created
 
+</details>
 
 ## Filesystem Hierarchy Standard
 
-**_23.In Linux FHS (Filesystem Hierarchy Standard) what is the `/`?_**
+<details>
+<summary><b><i>23.In Linux FHS (Filesystem Hierarchy Standard) what is the `/`?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - The root of the filesystem. The beginning of the tree.
 
-**_24.What is stored in each of the following paths?_**
+</details>
+
+<details>
+<summary><b><i>24.What is stored in each of the following paths?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `/bin, /sbin, /usr/bin and /usr/sbin` -> binaries
 - `/etc` -> configuration files
@@ -264,9 +291,16 @@ $\color{green}{\text{Answer}}$
 - `/var` -> files that tend to change and be modified like logs
 - `/tmp` -> temporary files
 
-**_25.What is special about the /tmp directory when compared to other directories?_**
+</details>
+
+<details>
+<summary><b><i>25.What is special about the /tmp directory when compared to other directories?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `/tmp` folder is cleaned automatically, usually upon reboot.
+
+</details>
 
 **_26.What kind of information one can find in /proc?_**
 
