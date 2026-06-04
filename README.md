@@ -540,19 +540,21 @@ $\color{green}{\text{Answer}}$
     - `sudo nano /etc/systemd/system/my-app.service`
    
 - Populate the .service file with the necessary configurations. A basic unit file includes:
-  - [Unit]
-  - Description=My Custom Application Service
-  - After=network.target
+  ```Linux
+  [Unit]
+  Description=My Custom Application Service
+  After=network.target
 
-  - [Service]
-  - ExecStart=/path/to/your/application/executable
-  - WorkingDirectory=/path/to/your/application/directory
-  - User=your_username
-  - Restart=always
-  - RestartSec=5
+  [Service]
+  ExecStart=/path/to/your/application/executable
+  WorkingDirectory=/path/to/your/application/directory
+  User=your_username
+  Restart=always
+  RestartSec=5
  
-  - [Install]
-  - WantedBy=multi-user.target
+  [Install]
+  WantedBy=multi-user.target
+  ```
 
 </details>
 
