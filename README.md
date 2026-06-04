@@ -349,75 +349,145 @@ $\color{green}{\text{Answer}}$
 
 ## Permissions
 
-**_31.How to change the permissions of a file?_**
+<details>
+<summary><b><i>31.How to change the permissions of a file?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - Using the `chmod` command.
 
-**_32.What does the following permissions mean?:_**
+</details>
+
+<details>
+<summary><b><i>32.What does the following permissions mean?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `777` -> You give the owner, group and other: Execute (1), Write (2) and Read (4); 4+2+1 = 7.
 - `644` -> Owner has Read (4), Write (2), 4+2 = 6; Group and Other have Read (4).
 - `750` -> Owner has x+r+w, Group has Read (4) and Execute (1); 4+1 = 5. Other have no permissions.
 
-**_33.What this command does? `chmod +x some_file`_**
+</details>
+
+<details>
+<summary><b><i>33.What this command does? `chmod +x some_file`</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - It adds execute permissions to all sets i.e user, group and others.
 
-**_34.Explain what is setgid and setuid_**
+</details>
+
+<details>
+<summary><b><i>34.Explain what is setgid and setuid</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `setuid` is a linux file permission that permits a user to run a file or program with the permissions of the owner of that file. This is possible by elevation of current user privileges.
 
 - `setgid` is a process when executed will run as the group that owns the file.
 
-**_35.What is the purpose of sticky bit?_**
+</details>
+
+<details>
+<summary><b><i>35.What is the purpose of sticky bit?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - Its a bit that only allows the owner or the root user to delete or modify the file.
 
-**_36.What the following commands do?_**
+</details>
+
+<details>
+<summary><b><i>36.What the following commands do?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `chmod` - changes access permissions to files system objects
 - `chown` - changes the owner of file system files and directories
 - `chgrp` - changes the group associated with a file system object
 
-**_37.What is sudo? How do you set it up?_**
+</details>
+
+<details>
+<summary><b><i>37.What is sudo? How do you set it up?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - sudo is a command-line utility in Unix-like operating systems that allows users to run programs with the privileges of another user, usually the superuser (root). It stands for "superuser do.
 
 - The sudo program is installed by default in almost all Linux distributions. If you need to install sudo in Debian/Ubuntu, use the command apt-get install sudo
 
-**_38.True or False? In order to install packages on the system one must be the root user or use the sudo command_**
+</details>
+
+<details>
+<summary><b><i>38.True or False? In order to install packages on the system one must be the root user or use the sudo command</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - True
 
-**_39.Explain what are ACLs. For what use cases would you recommend to use them?_**
+</details>
+
+<details>
+<summary><b><i>39.Explain what are ACLs. For what use cases would you recommend to use them?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - An Access Control List (ACL) is a set of rules that determines which users or systems are granted or denied access to a specific resource, such as a file, directory, or network.
 
 - They are used to enforce granular security policies, and recommended use cases include managing file and directory permissions, controlling network traffic, and securing API access. 
 
-**_40.You try to create a file but it fails. Name at least three different reason as to why it could happen_**
+</details>
+
+<details>
+<summary><b><i>40.You try to create a file but it fails. Name at least three different reason as to why it could happen</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - No more disk space
 - No more inodes
 - No permissions
 
-**_41.A user accidentally executed the following `chmod -x $(which chmod)`. How to fix it?_**
+</details>
+
+<details>
+<summary><b><i>41.A user accidentally executed the following `chmod -x $(which chmod)`. How to fix it?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - Using `sudo setfacl -m u::rx /usr/bin/chmod` will set the execute permissions on `chmod` for all the users. Post this, the `chmod` binary can be used as usual.
 
+</details>
+
 ## Scenarios
 
-**_42.You would like to copy a file to a remote Linux host. How would you do?_**
+<details>
+<summary><b><i>42.You would like to copy a file to a remote Linux host. How would you do?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - There are multiple ways to transfer files between hosts. Personal opinion: use `rsync`
 
-**_43.How to generate a random string?_**
+</details>
+
+<details>
+<summary><b><i>43.How to generate a random string?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - One way is to run the following: `cat /proc/sys/kernel/random/uuid`
 
-**_44.How to generate a random string of 7 characters?_**
+</details>
+
+<details>
+<summary><b><i>44.How to generate a random string of 7 characters?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `mkpasswd -l 7`
+
+</details>
 
 ## Systemd
 
