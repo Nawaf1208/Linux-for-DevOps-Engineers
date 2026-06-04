@@ -302,25 +302,50 @@ $\color{green}{\text{Answer}}$
 
 </details>
 
-**_26.What kind of information one can find in /proc?_**
+<details>
+<summary><b><i>26.What kind of information one can find in /proc?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - It contains useful information about the processes that are currently running, it is regarded as control and information center for kernel.
 
-**_27.What makes /proc different from other filesystems?_**
+</details>
+
+<details>
+<summary><b><i>27.What makes /proc different from other filesystems?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `/proc` is a special virtual filesystem in Unix-like operating systems, including Linux, that provides information about processes and system resources.
 
-**_28.True or False? only root can create files in /proc_**
+</details>
+
+<details>
+<summary><b><i>28.True or False? only root can create files in /proc</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - False. No one can create file in `/proc` directly (certain operations can lead to files being created in /proc by the kernel).
 
-**_29.What can be found in /proc/cmdline?_**
+</details>
+
+<details>
+<summary><b><i>29.What can be found in /proc/cmdline?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - The command passed to the boot loader to run the kernel
 
-**_30.In which path can you find the system devices (e.g. block storage)?_**
+</details>
+
+<details>
+<summary><b><i>30.In which path can you find the system devices (e.g. block storage)?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `/dev`
+
+</details>
 
 ## Permissions
 
