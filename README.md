@@ -491,26 +491,49 @@ $\color{green}{\text{Answer}}$
 
 ## Systemd
 
-**_45.What is systemd?_**
+<details>
+<summary><b><i>45.What is systemd?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - Systemd is a daemon (System 'd', d stands for daemon).
 
 - A daemon is a program that runs in the background without direct control of the user, although the user can at any time talk to the daemon.
 
-**_46.How to start or stop a service?_**
+</details>
+
+<details>
+<summary><b><i>46.How to start or stop a service?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - To start a service: `systemctl start <service name>`
 - To stop a service: `systemctl stop <service name>`
 
-**_47.How to check the status of a service?_**
+</details>
+
+<details>
+<summary><b><i>47.How to check the status of a service?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `systemctl status <service name>`
 
-**_48.On a system which uses systemd, how would you display the logs?_**
+</details>
+
+<details>
+<summary><b><i>48.On a system which uses systemd, how would you display the logs?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `journalctl`
 
-**_49.Describe how to make a certain process/app a service_**
+</details>
+
+<details>
+<summary><b><i>49.Describe how to make a certain process/app a service</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - Create a new file with a .service extension in /etc/systemd/system/.
   - For example, my-app.service.
@@ -530,6 +553,8 @@ $\color{green}{\text{Answer}}$
  
   - [Install]
   - WantedBy=multi-user.target
+
+</details>
 
 ## Troubleshooting and Debugging
 
