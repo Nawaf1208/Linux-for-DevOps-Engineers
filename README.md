@@ -681,6 +681,8 @@ $\color{green}{\text{Answer}}$
 
 - CPU utilization is the percentage of time a CPU is actively busy, while CPU load is the number of processes either actively using the CPU or waiting to use it.
 
+</details>
+
 <details>
 <summary><b><i>60.How you measure time execution of a program?</i></b></summary>
 
