@@ -560,15 +560,28 @@ $\color{green}{\text{Answer}}$
 
 ## Troubleshooting and Debugging
 
-**_50.Where system logs are located?_**
+<details>
+<summary><b><i>50.Where system logs are located?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `/var/log`
 
-**_51.How to follow file's content as it being appended without opening the file every time?_**
+</details>
+
+<details>
+<summary><b><i>51.How to follow file's content as it being appended without opening the file every time?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `tail -f <file_name>`
 
-**_52.What are you using for troubleshooting and debugging network issues?_**
+</details>
+
+<details>
+<summary><b><i>52.What are you using for troubleshooting and debugging network issues?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `dstat -t` is great for identifying network and disk issues. 
 - `netstat -tnlaup` can be used to see which processes are running on which ports.
@@ -577,32 +590,62 @@ $\color{green}{\text{Answer}}$
 - `tcpdump` for capturing packets.
 - `wireshark` same concept as tcpdump but with GUI (optional).
 
-**_53.What are you using for troubleshooting and debugging disk & file system issues?_**
+</details>
+
+<details>
+<summary><b><i>53.What are you using for troubleshooting and debugging disk & file system issues?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `dstat -t` is great for identifying network and disk issues.
 - `opensnoop` can be used to see which files are being opened on the system (in real time).
 
-**_54.What are you using for troubleshooting and debugging process issues?_**
+</details>
+
+<details>
+<summary><b><i>54.What are you using for troubleshooting and debugging process issues?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `strace` is great for understanding what your program does. It prints every system call your program executed.
 
-**_55.What are you using for debugging CPU related issues?_**
+</details>
+
+<details>
+<summary><b><i>55.What are you using for debugging CPU related issues?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `top` will show you how much CPU percentage each process consumes
 - `perf` is a great choice for sampling profiler and in general, figuring out what your CPU cycles are "wasted" on `flamegraphs` is great for CPU consumption visualization
 
-**_56.You get a call from someone claiming "my system is SLOW". What do you do?_**
+</details>
+
+<details>
+<summary><b><i>56.You get a call from someone claiming "my system is SLOW". What do you do?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - Check with `top` for anything unusual
 - Run `dstat -t` to check if it's related to disk or network.
 - Check if it's network related with `sar`
 - Check I/O stats with `iostat`
 
-**_57.Explain iostat output_**
+</details>
+
+<details>
+<summary><b><i>57.Explain iostat output</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - The `iostat` command in Linux provides input/output statistics for devices and CPU utilization.
 
-**_58.How to debug binaries?_**
+</details>
+
+<details>
+<summary><b><i>58.How to debug binaries?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - 1.Using GDB for Interactive Debugging
   - Start GDB
@@ -629,13 +672,21 @@ $\color{green}{\text{Answer}}$
  
 - 5.IDEs  
 
-**_59.What is the difference between CPU load and utilization?_**
+</details>
+
+<details>
+<summary><b><i>59.What is the difference between CPU load and utilization?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - CPU utilization is the percentage of time a CPU is actively busy, while CPU load is the number of processes either actively using the CPU or waiting to use it.
 
-**_60.How you measure time execution of a program?_**
+<details>
+<summary><b><i>60.How you measure time execution of a program?</i></b></summary>
 
 - `time` command
+
+</details>
 
 ### Scenario
 
