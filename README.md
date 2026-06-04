@@ -115,7 +115,7 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- Using the `mv` command.
+Using the `mv` command.
 
 </details>
 
@@ -137,8 +137,8 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- `whereis`
-- `which`
+`whereis`
+`which`
 
 </details>
 
@@ -147,8 +147,8 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- `echo hello world`
-- `echo "hello world"`
+`echo hello world`
+`echo "hello world"`
 
 - The echo command receives two separate arguments in the first execution and in the second execution it gets one argument which is the string "hello world". The output will be the same.
 
@@ -159,7 +159,7 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- Using a pipe in Linux, allows you to send the output of one command to the input of another command. For example: `cat /etc/services | wc -l`
+Using a pipe in Linux, allows you to send the output of one command to the input of another command. For example: `cat /etc/services | wc -l`
 
 </details>
 
@@ -221,9 +221,9 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- In Linux, IO redirection is a way of changing the default input/output behavior of a command or program. It allows you to redirect input and output from/to different sources/destinations, such as files, devices, and other commands.
+In Linux, IO redirection is a way of changing the default input/output behavior of a command or program. It allows you to redirect input and output from/to different sources/destinations, such as files, devices, and other commands.
 
-- Here are some common examples of IO redirection:
+Here are some common examples of IO redirection:
   - Redirecting Standard Output (stdout): `ls > filelist.txt`
   - Redirection Standard Error (stderr): `ls /some/nonexistent/directory 2> error.txt`
   - Appending to a file: `echo "hello" >> myfile.txt`
@@ -276,7 +276,7 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- The root of the filesystem. The beginning of the tree.
+The root of the filesystem. The beginning of the tree.
 
 </details>
 
@@ -298,7 +298,7 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- `/tmp` folder is cleaned automatically, usually upon reboot.
+`/tmp` folder is cleaned automatically, usually upon reboot.
 
 </details>
 
@@ -307,7 +307,7 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- It contains useful information about the processes that are currently running, it is regarded as control and information center for kernel.
+It contains useful information about the processes that are currently running, it is regarded as control and information center for kernel.
 
 </details>
 
@@ -316,7 +316,7 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- `/proc` is a special virtual filesystem in Unix-like operating systems, including Linux, that provides information about processes and system resources.
+`/proc` is a special virtual filesystem in Unix-like operating systems, including Linux, that provides information about processes and system resources.
 
 </details>
 
@@ -325,7 +325,7 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- False. No one can create file in `/proc` directly (certain operations can lead to files being created in /proc by the kernel).
+False. No one can create file in `/proc` directly (certain operations can lead to files being created in /proc by the kernel).
 
 </details>
 
@@ -334,7 +334,7 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- The command passed to the boot loader to run the kernel
+The command passed to the boot loader to run the kernel
 
 </details>
 
@@ -343,7 +343,7 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- `/dev`
+`/dev`
 
 </details>
 
@@ -354,7 +354,7 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- Using the `chmod` command.
+Using the `chmod` command.
 
 </details>
 
@@ -374,7 +374,7 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- It adds execute permissions to all sets i.e user, group and others.
+It adds execute permissions to all sets i.e user, group and others.
 
 </details>
 
@@ -383,9 +383,9 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- `setuid` is a linux file permission that permits a user to run a file or program with the permissions of the owner of that file. This is possible by elevation of current user privileges.
+`setuid` is a linux file permission that permits a user to run a file or program with the permissions of the owner of that file. This is possible by elevation of current user privileges.
 
-- `setgid` is a process when executed will run as the group that owns the file.
+`setgid` is a process when executed will run as the group that owns the file.
 
 </details>
 
@@ -394,7 +394,7 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- Its a bit that only allows the owner or the root user to delete or modify the file.
+Its a bit that only allows the owner or the root user to delete or modify the file.
 
 </details>
 
@@ -425,7 +425,7 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- True
+True
 
 </details>
 
@@ -456,7 +456,7 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- Using `sudo setfacl -m u::rx /usr/bin/chmod` will set the execute permissions on `chmod` for all the users. Post this, the `chmod` binary can be used as usual.
+Using `sudo setfacl -m u::rx /usr/bin/chmod` will set the execute permissions on `chmod` for all the users. Post this, the `chmod` binary can be used as usual.
 
 </details>
 
@@ -467,7 +467,7 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- There are multiple ways to transfer files between hosts. Personal opinion: use `rsync`
+There are multiple ways to transfer files between hosts. Personal opinion: use `rsync`
 
 </details>
 
@@ -476,7 +476,7 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- One way is to run the following: `cat /proc/sys/kernel/random/uuid`
+One way is to run the following: `cat /proc/sys/kernel/random/uuid`
 
 </details>
 
