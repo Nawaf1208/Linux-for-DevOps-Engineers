@@ -686,61 +686,116 @@ $\color{green}{\text{Answer}}$
 <details>
 <summary><b><i>60.How you measure time execution of a program?</i></b></summary>
 
+$\color{green}{\text{Answer}}$
+
 - `time` command
 
 </details>
 
 ### Scenario
 
-**_61.You have a process writing to a file. You don't know which process exactly, you just know the path of the file. You would like to kill the process as it's no longer needed. How would you achieve it?_**
+<details>
+<summary><b><i>61.You have a process writing to a file. You don't know which process exactly, you just know the path of the file. You would like to kill the process as it's no longer needed. How would you achieve it?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - Run `lsof <FILE_PATH>`
 - Use the pid (process ID) from the lsof command and run `kill <PID>`
 
+</details>
+
 ## Kernel
 
-**_62.What is a kernelm and what does it do?_**
+<details>
+<summary><b><i>62.What is a kernelm and what does it do?</i></b></summary>
 
-- The kernel is part of the operating system and is responsible for tasks like:
+$\color{green}{\text{Answer}}$
+
+The kernel is part of the operating system and is responsible for tasks like:
   - Allocating memory
   - Schedule processes
   - Control CPU
- 
-**_63.How do you find out which Kernel version your system is using?_**
 
-- `uname -a` command
+</details>
 
-**_64.What is a Linux kernel module and how do you load a new module?_**
+<details>
+<summary><b><i>63.How do you find out which Kernel version your system is using?</i></b></summary>
 
-- A Linux kernel module is a piece of code that can be dynamically loaded into the kernel to extend its functionality. These modules are typically used to add support for hardware devices, filesystems, or system calls. The kernel itself is monolithic, but with modules, its capabilities can be extended without having to reboot the system or recompile the entire kernel.
+$\color{green}{\text{Answer}}$
 
-**_65.Explain user space vs. kernel space_**
+`uname -a` command
 
-- The operating system executes the kernel in protected memory to prevent anyone from changing (and risking it crashing). This is what is known as "Kernel space". "User space" is where users executes their commands or applications. It's important to create this separation since we can't rely on user applications to not tamper with the kernel, causing it to crash.
+</details>
 
-**_66.In what phases of kernel lifecycle, can you change its configuration?_**
+<details>
+<summary><b><i>64.What is a Linux kernel module and how do you load a new module?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+A Linux kernel module is a piece of code that can be dynamically loaded into the kernel to extend its functionality. These modules are typically used to add support for hardware devices, filesystems, or system calls. The kernel itself is monolithic, but with modules, its capabilities can be extended without having to reboot the system or recompile the entire kernel.
+
+</details>
+
+<details>
+<summary><b><i>65.Explain user space vs. kernel space</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+The operating system executes the kernel in protected memory to prevent anyone from changing (and risking it crashing). This is what is known as "Kernel space". "User space" is where users executes their commands or applications. It's important to create this separation since we can't rely on user applications to not tamper with the kernel, causing it to crash.
+
+</details>
+
+<details>
+<summary><b><i>66.In what phases of kernel lifecycle, can you change its configuration?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - Build time (when it's compiled)
 - Boot time (when it starts)
 - Runtime (once it's already running)
 
-**_67.Where can you find kernel's configuration?_**
+</details>
 
-- Usually it will reside in `/boot/config-<kernel version>.<os release>.<arch>`
+<details>
+<summary><b><i>67.Where can you find kernel's configuration?</i></b></summary>
 
-**_68.Where can you find the file that contains the command passed to the boot loader to run the kernel?_**
+$\color{green}{\text{Answer}}$
 
-- `/proc/cmdline`
+Usually it will reside in `/boot/config-<kernel version>.<os release>.<arch>`
 
-**_69.How to list kernel's runtime parameters?_**
+</details>
 
-- `sysctl -a`
+<details>
+<summary><b><i>68.Where can you find the file that contains the command passed to the boot loader to run the kernel?</i></b></summary>
 
-**_70.Will running sysctl -a as a regular user vs. root, produce different result?_**
+$\color{green}{\text{Answer}}$
 
-- Yes, you might notice that in most systems, when running `systctl -a` with root, you'll get more runtime parameters compared to executing the same command with a regular user.
+`/proc/cmdline`
 
-**_71.You would like to enable IPv4 forwarding in the kernel, how would you do it?_**
+</details>
+
+<details>
+<summary><b><i>69.How to list kernel's runtime parameters?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+`sysctl -a`
+
+</details>
+
+<details>
+<summary><b><i>70.Will running sysctl -a as a regular user vs. root, produce different result?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Yes, you might notice that in most systems, when running `systctl -a` with root, you'll get more runtime parameters compared to executing the same command with a regular user.
+
+</details>
+
+<details>
+<summary><b><i>71.You would like to enable IPv4 forwarding in the kernel, how would you do it?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `sudo sysctl net.ipv4.ip_forward=1`
 
@@ -748,23 +803,43 @@ $\color{green}{\text{Answer}}$
 
 - Another way to is to run `echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward`
 
-**_72.How `sysctl` applies the changes to kernel's runtime parameters the moment you run sysctl command?_**
+</details>
+
+<details>
+<summary><b><i>72.How `sysctl` applies the changes to kernel's runtime parameters the moment you run sysctl command?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - If you `strace` the sysctl command you can see it does it by changing the file under /proc/sys/...
 
 - In the past it was done with sysctl system call, but it was deprecated at some point.
 
-**_73.How changes to kernel runtime parameters persist? (applied even after reboot to the system for example)_**
+</details>
 
-- There is a service called `systemd-sysctl` that takes the content of `/etc/sysctl.conf` and applies it. This is how changes persist, even after reboot, when they are written in `/etc/sysctl.conf`
+<details>
+<summary><b><i>73.How changes to kernel runtime parameters persist? (applied even after reboot to the system for example)</i></b></summary>
 
-**_74.Are the changes you make to kernel parameters in a container, affects also the kernel parameters of the host on which the container runs?_**
+$\color{green}{\text{Answer}}$
 
-- No. Containers have their own `/proc` filesystem so any change to kernel parameters inside a container, are not affecting the host or other containers running on that host.
+There is a service called `systemd-sysctl` that takes the content of `/etc/sysctl.conf` and applies it. This is how changes persist, even after reboot, when they are written in `/etc/sysctl.conf`
+
+</details>
+
+<details>
+<summary><b><i>74.Are the changes you make to kernel parameters in a container, affects also the kernel parameters of the host on which the container runs?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+No. Containers have their own `/proc` filesystem so any change to kernel parameters inside a container, are not affecting the host or other containers running on that host.
+
+</details>
 
 ## SSH
 
-**_75.What is SSH? How to check if a Linux server is running SSH?_**
+<details>
+<summary><b><i>75.What is SSH? How to check if a Linux server is running SSH?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - Wikipedia Definition: "SSH or Secure Shell is a cryptographic network protocol for operating network services securely over an unsecured network."
 
@@ -772,25 +847,50 @@ $\color{green}{\text{Answer}}$
 
 - An SSH server will have SSH daemon running. Depends on the distribution, you should be able to check whether the service is running (e.g. `systemctl status sshd`).
 
-**_76.Why SSH is considered better than telnet?_**
+</details>
 
-- Telnet also allows you to connect to a remote host but as opposed to SSH where the communication is encrypted, in telnet, the data is sent in clear text, so it doesn't considered to be secured because anyone on the network can see what exactly is sent, including passwords.
+<details>
+<summary><b><i>76.Why SSH is considered better than telnet?</i></b></summary>
 
-**_77.What is stored in `~/.ssh/known_hosts`?_**
+$\color{green}{\text{Answer}}$
 
-- The file stores the key fingerprints for the clients connecting to the SSH server. This fingerprint creates a trust between the client and the server for future SSH connections.
+Telnet also allows you to connect to a remote host but as opposed to SSH where the communication is encrypted, in telnet, the data is sent in clear text, so it doesn't considered to be secured because anyone on the network can see what exactly is sent, including passwords.
 
-**_78.You try to ssh to a server and you get "Host key verification failed". What does it mean?_**
+</details>
 
-- It means that the key of the remote host was changed and doesn't match the one that stored on the machine (in `~/.ssh/known_hosts`).
+<details>
+<summary><b><i>77.What is stored in `~/.ssh/known_hosts`?</i></b></summary>
 
-**_79.What is the difference between SSH and SSL?_**
+$\color{green}{\text{Answer}}$
 
-- SSH (Secure Shell) and SSL (Secure Sockets Layer) are both cryptographic protocols for secure communication, but they serve fundamentally different purposes. SSH is primarily used for secure remote access and command execution, while SSL/TLS is used to secure data in transit between a website and a user's browser
+The file stores the key fingerprints for the clients connecting to the SSH server. This fingerprint creates a trust between the client and the server for future SSH connections.
 
-**_80.What `ssh-keygen` is used for?
+</details>
 
-- ssh-keygen is a tool to generate an authentication key pair for SSH, that consists of a private and a public key. It supports a number of algorithms to generate authentication keys :
+<details>
+<summary><b><i>78.You try to ssh to a server and you get "Host key verification failed". What does it mean?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+It means that the key of the remote host was changed and doesn't match the one that stored on the machine (in `~/.ssh/known_hosts`).
+
+</details>
+
+<details>
+<summary><b><i>79.What is the difference between SSH and SSL?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+SSH (Secure Shell) and SSL (Secure Sockets Layer) are both cryptographic protocols for secure communication, but they serve fundamentally different purposes. SSH is primarily used for secure remote access and command execution, while SSL/TLS is used to secure data in transit between a website and a user's browser
+
+</details>
+
+<details>
+<summary><b><i>80.What `ssh-keygen` is used for?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+ssh-keygen is a tool to generate an authentication key pair for SSH, that consists of a private and a public key. It supports a number of algorithms to generate authentication keys :
   - dsa
   - ecdsa
   - ecdsa-sk
@@ -798,10 +898,10 @@ $\color{green}{\text{Answer}}$
   - ed25519-sk
   - rsa (default)
 
-- One can also specify number of bits in key. Command below generates an SSH key pair with RSA 4096-bits :
+One can also specify number of bits in key. Command below generates an SSH key pair with RSA 4096-bits :
   - `$ ssh-keygen -t rsa -b 4096`
 
-- The output looks like this:
+The output looks like this:
   - Generating public/private rsa key pair.
   - Enter file in which to save the key (/home/user/.ssh/id_rsa):
   - Enter passphrase (empty for no passphrase):
@@ -811,33 +911,42 @@ $\color{green}{\text{Answer}}$
   - The key fingerprint is:
   - SHA256:f5MOGnhzYfC0ZCHvbSXXiRiNVYETjxpHcXD5xSojx+M user@mac-book-pro
   - The key's randomart image is:
-  - `+---[RSA 4096]----+`
-  - `|        . ..+***o|`
-  - `|         o o++*o+|`
-  - `|        . =+.++++|`
-  - `|         B.oX+. .|`
-  - `|        S *=o+   |`
-  - `|       . o oE.   |`
-  - `|      . + + +    |`
-  - `|       . = + .   |`
-  - `|        .   .    |`
-  - `+----[SHA256]-----+`
+    ```Linux
+    +---[RSA 4096]----+
+    |        . ..+***o|
+    |         o o++*o+|
+    |        . =+.++++|
+    |         B.oX+. .|
+    |        S *=o+   |
+    |       . o oE.   |
+    |      . + + +    |
+    |       . = + .   |
+    |        .   .    |
+    +----[SHA256]-----+
+    ```
 
-- One can check how many bits an SSH key has with :
+One can check how many bits an SSH key has with :
   - `$ ssh-keygen -l -f /home/user/.ssh/id_rsa`
  
-- Output should look like this :
+Output should look like this :
   - `4096 SHA256:f5MOGnhzYfC0ZCHvbSXXiRiNVYETjxpHcXD5xSojx+M user@mac-book-pro (RSA)`
 
-- It shows the key is RSA 4096-bits.
+It shows the key is RSA 4096-bits.
 
-- `-l` and `-f` parameters usage explanation :
+`-l` and `-f` parameters usage explanation :
   - `l Show the fingerprint of the key file.`
   - `f filename Filename of the key file.`
- 
-**_81.What is SSH port forwarding?_**
 
-- SSH port forwarding, also known as SSH tunneling, is a powerful technique that redirects network traffic through an encrypted SSH connection. This creates a secure "tunnel" that allows you to safely transmit data, bypass firewalls, and access services that might otherwise be unavailable. 
+</details>
+
+<details>
+<summary><b><i>81.What is SSH port forwarding?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+SSH port forwarding, also known as SSH tunneling, is a powerful technique that redirects network traffic through an encrypted SSH connection. This creates a secure "tunnel" that allows you to safely transmit data, bypass firewalls, and access services that might otherwise be unavailable. 
+
+</details>
 
 ## Globbing & Wildcards
 
