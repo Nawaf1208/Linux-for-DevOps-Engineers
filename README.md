@@ -950,59 +950,121 @@ SSH port forwarding, also known as SSH tunneling, is a powerful technique that r
 
 ## Globbing & Wildcards
 
-**_82.What is Globbing?_**
+<details>
+<summary><b><i>82.What is Globbing?</i></b></summary>
 
-- Globbing is the mechanism used by the shell (like Bash) to expand wildcard characters in a command line into a list of matching file and directory names. This process happens before the command (such as `ls`, `cp`, or `rm`) actually runs, allowing users to perform operations on multiple files with a single, concise pattern.
+$\color{green}{\text{Answer}}$
 
-**_83.What are wildcards? Can you give an example of how to use them?_**
+Globbing is the mechanism used by the shell (like Bash) to expand wildcard characters in a command line into a list of matching file and directory names. This process happens before the command (such as `ls`, `cp`, or `rm`) actually runs, allowing users to perform operations on multiple files with a single, concise pattern.
 
--  Wildcards are special symbols used during a process called globbing to represent one or more characters when matching file or directory names in the command line. They are essential tools for managing files efficiently, allowing you to perform actions on groups of files without typing each name individually.
+</details>
 
-**_84.Explain what will `ls [XYZ]` match_**
+<details>
+<summary><b><i>83.What are wildcards? Can you give an example of how to use them?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Wildcards are special symbols used during a process called globbing to represent one or more characters when matching file or directory names in the command line. They are essential tools for managing files efficiently, allowing you to perform actions on groups of files without typing each name individually.
+
+</details>
+
+<details>
+<summary><b><i>84.Explain what will `ls [XYZ]` match</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - The command `ls [XYZ]` uses a wildcard pattern that leverages square brackets ([]) to perform filename matching (globbing).
 - The pattern `[XYZ]` specifically matches any single character that is either an X, a Y, or a Z exactly where the bracket pattern appears in the filename.
 
-**_85.Explain what will `ls [^XYZ]` match_**
+</details>
+
+<details>
+<summary><b><i>85.Explain what will `ls [^XYZ]` match</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - The command `ls [^XYZ]` utilizes a globbing pattern in Linux that uses the caret (`^`) character inside square brackets to perform negation.
 - The pattern `[^XYZ]` matches any single character file name in the current directory that is not an `X`, `Y`, or `Z`.
 
-**_86.Explain what will `ls [0-5]` match_**
+</details>
+
+<details>
+<summary><b><i>86.Explain what will `ls [0-5]` match</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - The command `ls [0-5]` uses a standard Linux globbing pattern that leverages square brackets (`[]`) with a range definition.
 - This pattern matches any single-character filename that is a digit between `0` and `5`, inclusive.
 
-**_87.What each of the following matches_**
+</details>
+
+<details>
+<summary><b><i>87.What each of the following matches</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
 - The `?` matches any single character
 - The `*` matches zero or more characters
 
-**_88.What do we grep for in each of the following commands?:_**
+</details>
+
+<details>
+<summary><b><i>88.What do we grep for in each of the following commands?:</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
 - `grep '[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}' some_file` -> An IP address
 - `grep -E "error|failure" some_file` -> The word "error" or "failure"
 - `grep '[0-9]$' some_file` -> Lines which end with a number
 
-**_89.Which line numbers will be printed when running `grep '\baaa\b'` on the following content:_** 
-- **_aaa bbb ccc.aaa aaaaaa_**
+</details>
 
-- No Output
+<details>
+<summary><b><i>89.Which line numbers will be printed when running `grep '\baaa\b'` on the following content:
 
-**_90.What is the difference single and double quotes?_**
+```Linux
+aaa bbb ccc.aaa aaaaaa
+```
+
+</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+No Output
+
+</details>
+
+<details>
+<summary><b><i>90.What is the difference single and double quotes?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - In Linux shells (like Bash), both single quotes (`' '`) and double quotes (`" "`) are used to group strings and escape characters that would otherwise have special meaning (like spaces or wildcards).
 - However, they differ fundamentally in one crucial way: single quotes disable all special meanings, while double quotes allow a select few special characters to remain active.
 - This difference is often called "strong quoting" versus "weak quoting."
 
-**_91.What is escaping? What escape character is used for escaping?_**
+</details>
+
+<details>
+<summary><b><i>91.What is escaping? What escape character is used for escaping?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - Escaping is the mechanism used to remove the special meaning from a character that would normally be interpreted by the shell
 
 - The escape character used is the backslash (`\`).
 
-**_92.What is an exit code? What exit codes are you familiar with?_**
+</details>
+
+<details>
+<summary><b><i>92.What is an exit code? What exit codes are you familiar with?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - An exit code (or return code) represents the code returned by a child process to its parent process.
 - 0 is an exit code which represents success while anything higher than 1 represents error. Each number has different meaning, based on how the application was developed.
+
+</details>
 
 ## Boot Process
 
