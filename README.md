@@ -1175,55 +1175,112 @@ False
 
 </details>
 
-**_103.True or False? You can create a soft link between different filesystems_**
+<details>
+<summary><b><i>103.True or False? You can create a soft link between different filesystems</i></b></summary>
 
-- True
+$\color{green}{\text{Answer}}$
 
-**_104.True or False? Directories always have by minimum 2 links_**
+True
 
-- True
+</details>
 
-**_105.What happens when you delete the original file in case of soft link and hard link?_**
+<details>
+<summary><b><i>104.True or False? Directories always have by minimum 2 links</i></b></summary>
 
-- When the original file is deleted, a soft link breaks because it merely points to the file's path, while a hard link remains fully functional because it acts as an alternative name pointing directly to the data on the disk. The data is only truly deleted when the last hard link referencing it is removed.
+$\color{green}{\text{Answer}}$
 
-**_106.Can you check what type of filesystem is used in /home?_**
+True
 
-- There are many answers for this question. One way is running `df -T`
+</details>
 
-**_107.What is a swap partition? What is it used for?_**
+<details>
+<summary><b><i>105.What happens when you delete the original file in case of soft link and hard link?</i></b></summary>
 
-- A swap partition is a dedicated area on a Linux storage drive that the operating system uses as virtual memory when the physical RAM is full. The kernel moves inactive data from RAM to this slower disk space to free up memory for active applications, or to write the entire system state to disk during hibernation.
+$\color{green}{\text{Answer}}$
 
-**_108.How to create a_**
-- **_new empty file_** -> `touch new_file.txt`
-- **_a file with text (without using text editor)_** -> `
-cat > new_file [enter] submit text; ctrl + d to exit insert mode`
-- **_a file with given size_** -> `truncate -s new_file.txt`
+When the original file is deleted, a soft link breaks because it merely points to the file's path, while a hard link remains fully functional because it acts as an alternative name pointing directly to the data on the disk. The data is only truly deleted when the last hard link referencing it is removed.
 
-**_109.You are trying to create a new file but you get "File system is full". You check with df for free space and you see you used only 20% of the space. What could be the problem?_**
+</details>
+
+<details>
+<summary><b><i>106.Can you check what type of filesystem is used in /home?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+There are many answers for this question. One way is running `df -T`
+
+</details>
+
+<details>
+<summary><b><i>107.What is a swap partition? What is it used for?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+A swap partition is a dedicated area on a Linux storage drive that the operating system uses as virtual memory when the physical RAM is full. The kernel moves inactive data from RAM to this slower disk space to free up memory for active applications, or to write the entire system state to disk during hibernation.
+
+</details>
+
+<details>
+<summary><b><i>108.How to create a</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+- new empty file -> `touch new_file.txt`
+- a file with text (without using text editor) -> `cat > new_file [enter] submit text; ctrl + d to exit insert mode`
+- a file with given size -> `truncate -s new_file.txt`
+
+</details>
+
+<details>
+<summary><b><i>109.You are trying to create a new file but you get "File system is full". You check with df for free space and you see you used only 20% of the space. What could be the problem?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - When you receive a "File system is full" error but df indicates plenty of free disk space, the problem is typically caused by exhausting all available inodes. In Linux filesystems, an inode is a metadata structure assigned to every file, storing information like ownership, permissions, and location on the disk, but not the file's actual data.
+  
 - While df reports on the usage of data blocks (the file content space), it doesn't always highlight inode usage. If a system has millions of extremely tiny files (e.g., temporary web cache files or session data), every single one consumes an inode. Once all inodes allocated for that specific partition are used up, the system cannot create any new files, regardless of how much physical storage space remains empty.
 
-**_110.How would you check what is the size of a certain directory?_**
+</details>
 
-- `du -sh`
+<details>
+<summary><b><i>110.How would you check what is the size of a certain directory?</i></b></summary>
 
-**_111.What is LVM?_**
+$\color{green}{\text{Answer}}$
 
-- LVM (Logical Volume Management) is a powerful, flexible storage management system for Linux that provides an abstraction layer between the physical storage devices (hard disks, SSDs) and the filesystem partitions used by the operating system.
+`du -sh`
 
-**_112.Explain the following in regards to LVM:_**
-  - **_PV_** - A Physical Volume (PV) is the foundational layer of LVM. It is an actual, physical storage device or partition that has been initialized for use by LVM.
+</details>
 
-  - **_VG_** - A Volume Group (VG) is the next layer up. It is a unified pool of storage space created by combining one or more Physical Volumes.
+<details>
+<summary><b><i>111.What is LVM?</i></b></summary>
 
-  - **_LV_** - A Logical Volume (LV) is a "virtual partition" carved out from the storage pool provided by a Volume Group. This is the final layer that the operating system interacts with.
+$\color{green}{\text{Answer}}$
 
-**_112.What is NFS? What is it used for?_**
+LVM (Logical Volume Management) is a powerful, flexible storage management system for Linux that provides an abstraction layer between the physical storage devices (hard disks, SSDs) and the filesystem partitions used by the operating system.
 
-- NFS (Network File System) is a distributed filesystem protocol in Linux that allows a user to access files and directories on a remote computer over a network as if they were stored locally on their own machine. 
+</details>
+
+<details>
+<summary><b><i>112.Explain the following in regards to LVM:</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+- PV - A Physical Volume (PV) is the foundational layer of LVM. It is an actual, physical storage device or partition that has been initialized for use by LVM.
+
+- VG - A Volume Group (VG) is the next layer up. It is a unified pool of storage space created by combining one or more Physical Volumes.
+
+- LV - A Logical Volume (LV) is a "virtual partition" carved out from the storage pool provided by a Volume Group. This is the final layer that the operating system interacts with.
+
+</details>
+
+<details>
+<summary><b><i>112.What is NFS? What is it used for?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+NFS (Network File System) is a distributed filesystem protocol in Linux that allows a user to access files and directories on a remote computer over a network as if they were stored locally on their own machine. 
+
+</details>
 
 **_113.What RAID is used for? Can you explain the differences between RAID 0, 1, 5 and 10?_**
 
