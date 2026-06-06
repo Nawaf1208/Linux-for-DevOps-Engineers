@@ -1081,7 +1081,7 @@ The process generally involves six major stages:
   - 3. Kernel Initialization
   - 4. Initial RAM Disk (initramfs/initrd)
   - 5. Init Process (systemd)
-    6. User Space and Login Prompt
+  - 6. User Space and Login Prompt
 
 </details>
 
