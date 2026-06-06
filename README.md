@@ -2708,6 +2708,8 @@ $\color{green}{\text{Answer}}$
 
 It's used in commands to mark the end of commands options. One common example is when used with git to discard local changes: `git checkout -- some_file`
 
+</details>
+
 <details>
 <summary><b><i>292.Wildcards are implemented on user or kernel space?</i></b></summary>
 
