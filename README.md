@@ -1068,11 +1068,14 @@ $\color{green}{\text{Answer}}$
 
 ## Boot Process
 
-**_93.Tell me everything you know about the Linux boot process._**
+<details>
+<summary><b><i>93.Tell me everything you know about the Linux boot process.</i></b></summary>
 
-- The Linux boot process is a highly choreographed sequence of events that transforms a powered-off computer into a fully operational system, passing control from low-level hardware firmware to the operating system's kernel and finally to user-space applications.
+$\color{green}{\text{Answer}}$
 
-- The process generally involves six major stages: 
+The Linux boot process is a highly choreographed sequence of events that transforms a powered-off computer into a fully operational system, passing control from low-level hardware firmware to the operating system's kernel and finally to user-space applications.
+
+The process generally involves six major stages: 
   - 1. BIOS/UEFI (Firmware Initialization)
   - 2. Bootloader (GRUB)
   - 3. Kernel Initialization
@@ -1080,17 +1083,34 @@ $\color{green}{\text{Answer}}$
   - 5. Init Process (systemd)
     6. User Space and Login Prompt
 
-**_94.What is GRUB2?_**
+</details>
 
-- GRUB2 (GRand Unified Bootloader version 2) is the standard and default bootloader for nearly all modern Linux distributions. It is the essential software that loads the Linux kernel (and initial RAM disk) into memory and transfers control to it, allowing the operating system to start.
+<details>
+<summary><b><i>94.What is GRUB2?</i></b></summary>
 
-**_95.What is Secure Boot?_**
+$\color{green}{\text{Answer}}$
 
-- Secure Boot is a security standard and feature of the UEFI (Unified Extensible Firmware Interface) firmware designed to protect the computer's boot process from malicious software (like bootkits and rootkits) that tries to load during startup.
+GRUB2 (GRand Unified Bootloader version 2) is the standard and default bootloader for nearly all modern Linux distributions. It is the essential software that loads the Linux kernel (and initial RAM disk) into memory and transfers control to it, allowing the operating system to start.
 
-**_96.What can you find in /boot?_**
+</details>
 
-- The `/boot` directory in Linux contains the essential, static files required to start the system. The contents of this directory are read by the bootloader (like GRUB2) before the main operating system's configuration files in `/etc` are accessed.
+<details>
+<summary><b><i>95.What is Secure Boot?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Secure Boot is a security standard and feature of the UEFI (Unified Extensible Firmware Interface) firmware designed to protect the computer's boot process from malicious software (like bootkits and rootkits) that tries to load during startup.
+
+</details>
+
+<details>
+<summary><b><i>96.What can you find in /boot?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+The `/boot` directory in Linux contains the essential, static files required to start the system. The contents of this directory are read by the bootloader (like GRUB2) before the main operating system's configuration files in `/etc` are accessed.
+
+</details>
 
 ## Disk and Filesystem
 
