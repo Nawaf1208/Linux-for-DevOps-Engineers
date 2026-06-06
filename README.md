@@ -1352,38 +1352,68 @@ False. `/tmp` is cleared upon system boot while `/var/tmp` is cleared every a co
 
 ## Performance Analysis
 
-**_119.How to check what is the current load average?_**
+<details>
+<summary><b><i>119.How to check what is the current load average?</i></b></summary>
 
-- One can use `uptime` or `top`
+$\color{green}{\text{Answer}}$
 
-**_120.You know how to see the load average, great. but what each part of it means? for example 1.43, 2.34, 2.78_**
+One can use `uptime` or `top`
 
-- The Linux load average provides a snapshot of system demand and can typically be viewed using commands like `uptime`, `top`, or `htop`. It is represented by three numbers:
+</details>
 
-- `load average: 1.43, 2.34, 2.78`
+<details>
+<summary><b><i>120.You know how to see the load average, great. but what each part of it means? for example 1.43, 2.34, 2.78</i></b></summary>
 
-- These three numbers represent the average number of processes that are either running or waiting to run (in a runnable state or uninterruptible sleep) over different time periods:
+$\color{green}{\text{Answer}}$
 
-- `Value	Time Period	      Meaning`
-- `1.43	  Last 1 minute	    The immediate system load average.`
-- `2.34	  Last 5 minutes    The intermediate system load average.`
-- `2.78	  Last 15 minutes	  The long-term system load average.`
+The Linux load average provides a snapshot of system demand and can typically be viewed using commands like `uptime`, `top`, or `htop`. It is represented by three numbers:
 
-**_121.How to check process usage?_**
+  - `load average: 1.43, 2.34, 2.78`
 
-- `pidstat`
+These three numbers represent the average number of processes that are either running or waiting to run (in a runnable state or uninterruptible sleep) over different time periods:
 
-**_122.How to check disk I/O?_**
+  - `Value	Time Period	      Meaning`
+  - `1.43	  Last 1 minute	    The immediate system load average.`
+  - `2.34	  Last 5 minutes    The intermediate system load average.`
+  - `2.78	  Last 15 minutes	  The long-term system load average.`
 
-- `iostat -xz 1`
+</details>
 
-**_123.How to check how much free memory a system has? How to check memory consumption by each process?_**
+<details>
+<summary><b><i>121.How to check process usage?</i></b></summary>
 
-- You can use the commands `top` and `free`
+$\color{green}{\text{Answer}}$
 
-**_124.How to check TCP stats?_**
+`pidstat`
 
-- sar -n TCP,ETCP 1
+</details>
+
+<details>
+<summary><b><i>122.How to check disk I/O?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+`iostat -xz 1`
+
+</details>
+
+<details>
+<summary><b><i>123.How to check how much free memory a system has? How to check memory consumption by each process?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+You can use the commands `top` and `free`
+
+</details>
+
+<details>
+<summary><b><i>124.How to check TCP stats?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+sar -n TCP,ETCP 1
+
+</details>
 
 ## Processes
 
