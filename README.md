@@ -2600,14 +2600,13 @@ $\color{green}{\text{Answer}}$
 
 $\color{green}{\text{Answer}}$
 
-- The OOM (Out-Of-Memory) Killer is a Linux kernel component designed to gracefully recover the system when physical memory (RAM) is exhausted.
+The OOM (Out-Of-Memory) Killer is a Linux kernel component designed to gracefully recover the system when physical memory (RAM) is exhausted.
 
-- When the system runs out of memory and cannot satisfy new allocation requests, the OOM Killer steps in to:
+When the system runs out of memory and cannot satisfy new allocation requests, the OOM Killer steps in to:
+  - 1.Select a "Victim": It uses a heuristic scoring algorithm to select the process that will cause the least damage and free the most memory. Processes with lower priority, large memory usage, and those that have recently increased their memory consumption are often targeted.
+  - 2.Terminate: It forcibly kills the selected process (or processes) to immediately reclaim their memory and allow the system to continue operating, preventing a full crash or deadlock.
 
-- 1.Select a "Victim": It uses a heuristic scoring algorithm to select the process that will cause the least damage and free the most memory. Processes with lower priority, large memory usage, and those that have recently increased their memory consumption are often targeted.
-- 2.Terminate: It forcibly kills the selected process (or processes) to immediately reclaim their memory and allow the system to continue operating, preventing a full crash or deadlock.
-
-- This behavior is a defensive mechanism, prioritizing system stability over individual application uptime. Processes can be configured to resist the OOM killer using the `oom_score_adj` setting.
+This behavior is a defensive mechanism, prioritizing system stability over individual application uptime. Processes can be configured to resist the OOM killer using the `oom_score_adj` setting.
 
 </details>
 
