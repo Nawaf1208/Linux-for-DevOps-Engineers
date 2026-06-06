@@ -1282,42 +1282,73 @@ NFS (Network File System) is a distributed filesystem protocol in Linux that all
 
 </details>
 
-**_113.What RAID is used for? Can you explain the differences between RAID 0, 1, 5 and 10?_**
+<details>
+<summary><b><i>113.What RAID is used for? Can you explain the differences between RAID 0, 1, 5 and 10?</i></b></summary>
 
-- RAID (Redundant Array of Independent Disks) is a storage technology used in Linux and other operating systems that combines multiple physical disk drives into a single logical unit. Its primary purposes are to improve performance (speed), provide data redundancy (fault tolerance), or both. This allows administrators to optimize storage for specific needs, ranging from high-speed temporary storage to mission-critical, highly reliable data storage.
+$\color{green}{\text{Answer}}$
 
-- The primary differences lie in how data is distributed and protected:
+RAID (Redundant Array of Independent Disks) is a storage technology used in Linux and other operating systems that combines multiple physical disk drives into a single logical unit. Its primary purposes are to improve performance (speed), provide data redundancy (fault tolerance), or both. This allows administrators to optimize storage for specific needs, ranging from high-speed temporary storage to mission-critical, highly reliable data storage.
+
+The primary differences lie in how data is distributed and protected:
   - RAID 0 (Striping) offers the fastest performance by splitting data across drives, but provides no data protection if a single drive fails.
   - RAID 1 (Mirroring) provides maximum safety by duplicating all data across drives, but halves the usable storage capacity and offers no performance benefit for writing.
   - RAID 5 balances performance and safety by using striping with a parity scheme, allowing for a single drive failure tolerance with minimal capacity overhead (requiring at least three drives).
   - RAID 10 (Striping and Mirroring) provides the best of both worlds—high performance and high fault tolerance—by combining mirrored pairs into a striped array, though at the cost of 50% usable capacity (requiring at least four drives).
 
-**_114.Describe the process of extending a filesystem disk space_**
+</details>
 
-- Extending a filesystem's disk space in Linux involves several steps that must be performed sequentially, moving from the physical layer up to the logical layer. The exact process depends on whether you are using traditional disk partitions or LVM (Logical Volume Management), with LVM being the more flexible method. 
+<details>
+<summary><b><i>114.Describe the process of extending a filesystem disk space</i></b></summary>
 
-- The General Process
-  - 1. Add/Expand the Physical Disk Space: This is usually done at the hardware level (adding a new drive) or hypervisor level (expanding a virtual disk in VMware, AWS, etc.).
-    2. Rescan the Kernel: The Linux kernel needs to recognize the new, unallocated space.
+$\color{green}{\text{Answer}}$
+
+Extending a filesystem's disk space in Linux involves several steps that must be performed sequentially, moving from the physical layer up to the logical layer. The exact process depends on whether you are using traditional disk partitions or LVM (Logical Volume Management), with LVM being the more flexible method. 
+
+The General Process
+  1. Add/Expand the Physical Disk Space: This is usually done at the hardware level (adding a new drive) or hypervisor level (expanding a virtual disk in VMware, AWS, etc.).
+  2. Rescan the Kernel: The Linux kernel needs to recognize the new, unallocated space.
       - For a new disk, you might need to rescan the SCSI host: echo "- - -" > /sys/class/scsi_host/host[X]/scan.
       - For an expanded existing disk, a simple reboot often works, or you can force a rescan: echo 1 > /sys/block/sd[X]/device/rescan.
-    3. Expand the Partition/Volume: This is where the process diverges based on your setup
+  3. Expand the Partition/Volume: This is where the process diverges based on your setup
 
-**_115.What is lazy umount?_**
+</details>
 
-- Lazy unmount in Linux is a mechanism that allows you to immediately detach a filesystem from the system's directory hierarchy, even if it is currently "busy" (has open files or active processes using it). 
+<details>
+<summary><b><i>115.What is lazy umount?</i></b></summary>
 
-**_116.What is tmpfs?_**
+$\color{green}{\text{Answer}}$
 
-- `tmpfs` (Temporary File System) is a type of volatile, in-memory filesystem used in Linux. It is a modern, faster alternative to the older `ramdisk` approach.
+Lazy unmount in Linux is a mechanism that allows you to immediately detach a filesystem from the system's directory hierarchy, even if it is currently "busy" (has open files or active processes using it). 
 
-**_117.What is stored in each of the following logs?_**
-- **_/var/log/messages_** -> Stores general system activity, informational messages, and non-critical errors from the kernel and various daemons on Red Hat-based systems.
-- **_/var/log/boot.log_** -> Contains a record of all events, service statuses, and console messages generated specifically during the system's boot process.
+</details>
 
-**_118.True or False? both /tmp and /var/tmp cleared upon system boot_**
+<details>
+<summary><b><i>116.What is tmpfs?</i></b></summary>
 
-- False. `/tmp` is cleared upon system boot while `/var/tmp` is cleared every a couple of days or not cleared at all (depends on distro).
+$\color{green}{\text{Answer}}$
+
+`tmpfs` (Temporary File System) is a type of volatile, in-memory filesystem used in Linux. It is a modern, faster alternative to the older `ramdisk` approach.
+
+</details>
+
+<details>
+<summary><b><i>117.What is stored in each of the following logs?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+- `/var/log/messages` -> Stores general system activity, informational messages, and non-critical errors from the kernel and various daemons on Red Hat-based systems.
+- `/var/log/boot.log` -> Contains a record of all events, service statuses, and console messages generated specifically during the system's boot process.
+
+</details>
+
+<details>
+<summary><b><i>118.True or False? both /tmp and /var/tmp cleared upon system boot</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+False. `/tmp` is cleared upon system boot while `/var/tmp` is cleared every a couple of days or not cleared at all (depends on distro).
+
+</details>
 
 ## Performance Analysis
 
