@@ -2579,97 +2579,173 @@ Here the connection name is "System ens5". Let's say we want to modify settings 
 
 ## Misc
 
-**_280.What is a Linux distribution?_**
+<details>
+<summary><b><i>280.What is a Linux distribution?</i></b></summary>
 
-- A collection of packages - kernel, GNU, third party apps, ...
-- Sometimes distributions store some information on the distribution in `/etc/*-release` file
+$\color{green}{\text{Answer}}$
+
+A collection of packages - kernel, GNU, third party apps, ...
+Sometimes distributions store some information on the distribution in `/etc/*-release` file
   - For example for Red Hat distribution it will be `/etc/redhat-release` and for Amazon it will be /etc/os-release
   - `lsb_release` is a common command you can use in multiple different distributions
 
-**_281.Name 5 commands which are two letters long_**
+</details>
 
-- `ls`, `wc`, `dd`, `df`, `du`, `ps`, `ip`, `cp`, `cd` ...
+<details>
+<summary><b><i>281.Name 5 commands which are two letters long</i></b></summary>
 
-**_282.What ways are there for creating a new empty file?_**
+$\color{green}{\text{Answer}}$
 
-- touch new_file
-- echo "" > new_file
+`ls`, `wc`, `dd`, `df`, `du`, `ps`, `ip`, `cp`, `cd` ...
 
-**_283.How `cd -` works? How does it knows the previous location?_**
+</details>
 
-- 1.Updating `OLDPWD`: Every time you successfully use the `cd` command to change your directory, the shell automatically sets the value of the `OLDPWD` variable to the old current working directory (`$PWD`).
+<details>
+<summary><b><i>282.What ways are there for creating a new empty file?</i></b></summary>
 
-- 2.`cd -` Execution: When you execute `cd -`, the shell executes the equivalent of `cd $OLDPWD`.
+$\color{green}{\text{Answer}}$
 
-- 3.Output: For convenience, the shell also prints the full path of the directory it has just switched to.
+`touch new_file`
+`echo "" > new_file`
 
-**_284.List three ways to print all the files in the current directory_**
+</details>
 
-- `ls`
-- `find .`
-- `echo *`
+<details>
+<summary><b><i>283.How `cd -` works? How does it knows the previous location?</i></b></summary>
 
-**_285.How to count the number of lines in a file? What about words?_**
+$\color{green}{\text{Answer}}$
 
-- For these we can use `wc` command.
+1.Updating `OLDPWD`: Every time you successfully use the `cd` command to change your directory, the shell automatically sets the value of the `OLDPWD` variable to the old current working directory (`$PWD`).
+
+2.`cd -` Execution: When you execute `cd -`, the shell executes the equivalent of `cd $OLDPWD`.
+
+3.Output: For convenience, the shell also prints the full path of the directory it has just switched to.
+
+</details>
+
+<details>
+<summary><b><i>284.List three ways to print all the files in the current directory</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+`ls`
+`find .`
+`echo *`
+
+</details>
+
+<details>
+<summary><b><i>285.How to count the number of lines in a file? What about words?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+For these we can use `wc` command.
   - To count the number of lines in file `wc -l`
   - To count the number of words in file `wc -w`
 
-**_286.You define x=2 in /etc/bashrc and x=6 ~/.bashrc you then login to the system. What would be the value of x?_**
+</details>
 
-- The value of x would be 6.
+<details>
+<summary><b><i>286.You define x=2 in /etc/bashrc and x=6 ~/.bashrc you then login to the system. What would be the value of x?</i></b></summary>
 
-**_287.What is the difference between man and info?_**
+$\color{green}{\text{Answer}}$
+
+The value of x would be 6.
+
+</details>
+
+<details>
+<summary><b><i>287.What is the difference between man and info?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `man` (manual pages) provides concise, traditional documentation for Linux commands, system calls, and configuration files. They are typically viewed one page at a time, formatted with a clear structure (NAME, SYNOPSIS, DESCRIPTION), and are generally better for quick lookups of command options or function signatures.
 
 - `info` pages provide more comprehensive, hyperlinked documentation based on the GNU Texinfo format. They are structured like a manual or textbook, allowing the user to navigate between related nodes of information, which makes them ideal for in-depth tutorials and reading about complex GNU utilities in detail.
 
-**_288.Explain "environment variables". How do you list all environment variables?_**
+</details>
 
-- Environment Variables are named values stored in the shell's memory that configure the runtime behavior of programs and processes. They are inherited by child processes.
+<details>
+<summary><b><i>288.Explain "environment variables". How do you list all environment variables?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Environment Variables are named values stored in the shell's memory that configure the runtime behavior of programs and processes. They are inherited by child processes.
 
 - `env`: Lists only the variables passed to child processes.
 - `printenv`: Lists environment variables (or a specific one).
 - `set`: Lists all shell variables (environment, local, and functions).
 
-**_289.What is a TTY device?_**
+</details>
 
-- A TTY (Teletypewriter or Teletype) device is the Linux term for any terminal interface that handles input/output for a user session.
+<details>
+<summary><b><i>289.What is a TTY device?</i></b></summary>
 
-- TTY Types
-- 1.Console/Virtual Terminal (`/dev/ttyN`): The physical terminals accessed directly on the machine (usually via Ctrl+Alt+F1 through F6).
-- 2.Serial TTY (`/dev/ttyS`): Used for communication over serial ports.
-- 3.Pseudo-TTY (PTY) (`/dev/pts/N`): The most common type today, used by remote login sessions (SSH), terminal emulators (like GNOME Terminal or Konsole), and programs like screen or tmux.
+$\color{green}{\text{Answer}}$
 
-**_290.How to create your own environment variables?_**
+A TTY (Teletypewriter or Teletype) device is the Linux term for any terminal interface that handles input/output for a user session.
 
-- `X=2` for example. But this will persist to new shells. To have it in new shells as well, use `export X=2`
+TTY Types
+  - 1.Console/Virtual Terminal (`/dev/ttyN`): The physical terminals accessed directly on the machine (usually via Ctrl+Alt+F1 through F6).
+  - 2.Serial TTY (`/dev/ttyS`): Used for communication over serial ports.
+  - 3.Pseudo-TTY (PTY) (`/dev/pts/N`): The most common type today, used by remote login sessions (SSH), terminal emulators (like GNOME Terminal or Konsole), and programs like screen or tmux.
 
-**_291.What a double dash (--) mean?_**
+<details>
+<summary><b><i>290.How to create your own environment variables?</i></b></summary>
 
-- It's used in commands to mark the end of commands options. One common example is when used with git to discard local changes: `git checkout -- some_file`
+$\color{green}{\text{Answer}}$
 
-**_292.Wildcards are implemented on user or kernel space?_**
+`X=2` for example. But this will persist to new shells. To have it in new shells as well, use `export X=2`
+
+</details>
+
+<details>
+<summary><b><i>291.What a double dash (--) mean?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+It's used in commands to mark the end of commands options. One common example is when used with git to discard local changes: `git checkout -- some_file`
+
+<details>
+<summary><b><i>292.Wildcards are implemented on user or kernel space?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - Wildcards (like `*`, `?`, `[]`) are implemented in user space by the shell (e.g., Bash) before the command is executed.
   
 - This process is called globbing or pathname expansion. The kernel only receives the final, expanded list of matching filenames as arguments, not the wildcard pattern itself. 
 
-**_293.If I plug a new device into a Linux machine, where on the system, a new device entry/file will be created?_**
+</details>
 
-- `/dev`
+<details>
+<summary><b><i>293.If I plug a new device into a Linux machine, where on the system, a new device entry/file will be created?</i></b></summary>
 
-**_294.Why there are different sections in man? What is the difference between the sections?_**
+$\color{green}{\text{Answer}}$
 
-- The man (manual) pages are divided into numbered sections primarily to organize documentation by category and prevent naming conflicts between different types of files or functions (e.g., a user command and a configuration file might share the same name).
-- The core difference lies in the context of the documentation:
+`/dev`
+
+</details>
+
+<details>
+<summary><b><i>294.Why there are different sections in man? What is the difference between the sections?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+The man (manual) pages are divided into numbered sections primarily to organize documentation by category and prevent naming conflicts between different types of files or functions (e.g., a user command and a configuration file might share the same name).
+
+The core difference lies in the context of the documentation:
   - Section 1 covers executable commands (things you run, like ls or grep)
   - Section 2 covers system calls (functions programmers use to request services from the kernel, like open or fork)
   - Section 5 covers file formats and conventions (like /etc/passwd).
-- This structure allows users and developers to quickly find the relevant documentation for the specific component they are interested in.
 
-**_295.What is User-mode Linux?_**
+This structure allows users and developers to quickly find the relevant documentation for the specific component they are interested in.
+
+</details>
+
+<details>
+<summary><b><i>295.What is User-mode Linux?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - In Linux, user mode is a restricted operating mode in which a user's application or process runs. User mode is a non-privileged mode that prevents user-level processes from accessing sensitive system resources directly.
 In user mode, an application can only access hardware resources indirectly, by calling system services or functions provided by the operating system. This ensures that the system's security and stability are maintained by preventing user processes from interfering with or damaging system resources.
@@ -2678,6 +2754,13 @@ In user mode, an application can only access hardware resources indirectly, by c
 
 - In contrast to user mode, kernel mode is a privileged operating mode in which the operating system's kernel has full access to system resources, and can perform low-level operations, such as accessing hardware devices and managing system resources directly.
 
-**_296.Under which license Linux is distributed?_**
+</details>
 
-- GPL v2
+<details>
+<summary><b><i>296.Under which license Linux is distributed?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+GPL v2
+
+</details>
