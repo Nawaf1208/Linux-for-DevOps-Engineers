@@ -2690,6 +2690,8 @@ TTY Types
   - 2.Serial TTY (`/dev/ttyS`): Used for communication over serial ports.
   - 3.Pseudo-TTY (PTY) (`/dev/pts/N`): The most common type today, used by remote login sessions (SSH), terminal emulators (like GNOME Terminal or Konsole), and programs like screen or tmux.
 
+</details>
+
 <details>
 <summary><b><i>290.How to create your own environment variables?</i></b></summary>
 
