@@ -1114,33 +1114,66 @@ The `/boot` directory in Linux contains the essential, static files required to 
 
 ## Disk and Filesystem
 
-**_97.What's an inode?_**
+<details>
+<summary><b><i>97.What's an inode?</i></b></summary>
 
-- For each file (and directory) in Linux there is an inode, a data structure which stores meta data related to the file like its size, owner, permissions, etc.
+$\color{green}{\text{Answer}}$
 
-**_98.Which of the following is not included in inode:_**
-- **_Link count_**
-- **_File size_**
-- **_File name_**
-- **_File timestamp_**
+For each file (and directory) in Linux there is an inode, a data structure which stores meta data related to the file like its size, owner, permissions, etc.
 
-- File name (it's part of the directory file)
+</details>
 
-**_99.How to check which disks are currently mounted?_**
+<details>
+<summary><b><i>98.Which of the following is not included in inode:
+  
+- Link count
+- File size
+- File name
+- File timestamp
 
-- Run `mount`
+</i></b></summary>
 
-**_100.You run the `mount` command but you get no output. How would you check what mounts you have on your system?_**
+$\color{green}{\text{Answer}}$
 
-- `cat /proc/mounts`
+File name (it's part of the directory file)
 
-**_101.What is the difference between a soft link and hard link?_**
+</details>
 
-- Hard link is the same file, using the same inode. Soft link is a shortcut to another file, using a different inode.
+<details>
+<summary><b><i>99.How to check which disks are currently mounted?</i></b></summary>
 
-**_102.True or False? You can create an hard link for a directory_**
+$\color{green}{\text{Answer}}$
 
-- False
+Run `mount`
+
+</details>
+
+<details>
+<summary><b><i>100.You run the `mount` command but you get no output. How would you check what mounts you have on your system?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+`cat /proc/mounts`
+
+</details>
+
+<details>
+<summary><b><i>101.What is the difference between a soft link and hard link?</i>/</b>/</summary>
+
+$\color{green}{\text{Answer}}$
+
+Hard link is the same file, using the same inode. Soft link is a shortcut to another file, using a different inode.
+
+</details>
+
+<details>
+<summary><b><i>102.True or False? You can create an hard link for a directory</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+False
+
+</details>
 
 **_103.True or False? You can create a soft link between different filesystems_**
 
