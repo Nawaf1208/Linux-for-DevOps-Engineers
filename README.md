@@ -2593,6 +2593,8 @@ $\color{green}{\text{Answer}}$
 
 - Swapping (in its traditional sense) refers to moving the entire address space of an inactive process out of RAM and onto the disk to free up a large contiguous block of memory. This operation is much slower and less granular than paging. While the term "swapping" is still often used informally to describe moving pages to the swap space, modern Linux kernels primarily use paging mechanisms for virtual memory management, rarely performing full process swaps.
 
+</details>
+
 <details>
 <summary><b><i>275.Explain what is OOM killer.</i></b></summary>
 
