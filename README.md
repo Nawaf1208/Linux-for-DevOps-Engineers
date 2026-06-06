@@ -2562,11 +2562,10 @@ This file descriptor is used by subsequent system calls (like `bind()`, `connect
 $\color{green}{\text{Answer}}$
 
 It is possible to restore a script while it's still running if it has been accidentally removed. The running script process still has the code in memory. You can use the /proc filesystem to retrieve the content of the running script.
-1.Find the Process ID by running ``` ps aux | grep yourscriptname.sh ``` Replace yourscriptname.sh with your script name.
-2.Once you have the PID, you can access the script's memory through the /proc filesystem. The script will be available at /proc//fd/, where is the process ID of the running script. Typically, the script's file descriptor is 0 or 1.
+ - 1.Find the Process ID by running ``` ps aux | grep yourscriptname.sh ``` Replace yourscriptname.sh with your script name.
+ - 2.Once you have the PID, you can access the script's memory through the /proc filesystem. The script will be available at /proc//fd/, where is the process ID of the running script. Typically, the script's file descriptor is 0 or 1.
 
 You can copy the script content to a new file using the cp command:
-
   - `cp /proc/<PID>/fd/0 /path_to_restore_your_file/yourscriptname.sh`
 
 Replace with the actual PID of the script and
