@@ -2429,7 +2429,10 @@ Here the connection name is "System ens5". Let's say we want to modify settings 
  
 ## Advanced Networking
 
-**_263.When you run ip a you see there is a device called 'lo'. What is it and why do we need it?_**
+<details>
+<summary><b><i>263.When you run ip a you see there is a device called 'lo'. What is it and why do we need it?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - `lo` stands for Loopback Interface.
 
@@ -2443,101 +2446,157 @@ Here the connection name is "System ens5". Let's say we want to modify settings 
 
 - 3.Guaranteed Availability: Because it's purely software, the loopback interface is always up and available, guaranteeing a working network path for inter-process communication on the host, even when all physical network interfaces are down.
 
-**_264.What the traceroute command does? How does it works?_**
+</details>
+
+<details>
+<summary><b><i>264.What the traceroute command does? How does it works?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - The `traceroute` command is a network diagnostic tool that displays the path (list of routers/hops) and the transit delays (latency) that data packets take to reach a specified destination host.
 
 - It's primarily used to pinpoint where connection issues, latency, or packet loss are occurring along a network route.
 
-- How It Works
+How It Works
   - 1.It sends a series of probe packets (usually UDP or ICMP) to the destination, starting with TTL = 1.
   - 2.The first router (Hop 1) receives the packet, decrements the TTL to 0, discards the packet, and sends back an ICMP "Time Exceeded" error message, revealing its IP address.
   - 3.It repeats the process, incrementing the TTL by 1 for each subsequent set of packets (TTL = 2, TTL = 3, etc.).
   - 4.Each increment allows the packet to travel one hop further before it expires and triggers the "Time Exceeded" message from the next router.
   - 5.This continues until the packet finally reaches the destination, which responds with a different message, signifying the end of the trace.
- 
-**_265.What is network bonding? What types are you familiar with?_**
 
-- Network Bonding (or NIC Teaming) is the Linux process of combining multiple physical network interfaces (NICs) into a single logical interface (e.g., bond0).
+</details>
 
-- It is done to achieve:
+<details>
+<summary><b><i>265.What is network bonding? What types are you familiar with?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Network Bonding (or NIC Teaming) is the Linux process of combining multiple physical network interfaces (NICs) into a single logical interface (e.g., bond0).
+
+It is done to achieve:
   - Fault Tolerance/Redundancy: If one physical link or NIC fails, traffic automatically switches to the remaining links.
   - Load Balancing/Increased Throughput: Traffic is distributed across multiple active links, effectively increasing the available bandwidth.
  
-- Common Linux Bonding Modes:
+Common Linux Bonding Modes:
   - Mode 1 (Active-Backup): Fault Tolerance. Only one NIC is active; others are standby. Simplest and most common.
   - Mode 0 (Balance-RR): Load Balancing. Transmits packets sequentially (Round-Robin) across all links.
   - Mode 4 (802.3ad (LACP)): Load Balancing & Fault Tolerance. Dynamic link aggregation. Uses an industry standard protocol.
- 
-**_266.How to link two separate network namespaces so you can ping an interface on one namespace from the second one?_**
 
-- The primary method to link two separate Linux network namespaces (`netns`) for communication is using a Virtual Ethernet (veth) pair.
+</details>
 
-- A veth pair acts as a virtual cable:
-- 1.Create Pair: Use `ip link add <vethA> type veth peer name <vethB>`.
-- 2.Move Ends: Place one end of the pair into the first namespace and the other end into the second.
-  - `ip link set <vethA> netns <ns1>`
-  - `ip link set <vethB> netns <ns2>`
-- 3.Configure: Assign IP addresses on the same subnet to the interfaces within their respective namespaces and bring them up.
-  - e.g., `<vethA>` gets `10.0.0.1/24` in `ns1`, and `<vethB>` gets `10.0.0.2/24` in `ns2`.
+<details>
+<summary><b><i>266.How to link two separate network namespaces so you can ping an interface on one namespace from the second one?</i></b></summary>
 
-- Packets sent out of one end of the veth pair instantly arrive at the other end, enabling direct Layer 2 (Ethernet) communication and, consequently, ping (Layer 3) functionality between the two isolated namespaces.
+$\color{green}{\text{Answer}}$
 
-**_267.What are cgroups?_**
+The primary method to link two separate Linux network namespaces (`netns`) for communication is using a Virtual Ethernet (veth) pair.
 
-- cgroups (Control Groups) is a Linux kernel feature that organizes processes hierarchically and allocates or limits system resources—such as CPU, memory, disk I/O, and network bandwidth—to those groups of processes.
- 
-**_268.Explain Process Descriptor and Task Structure_**
+A veth pair acts as a virtual cable:
+  - 1.Create Pair: Use `ip link add <vethA> type veth peer name <vethB>`.
+  - 2.Move Ends: Place one end of the pair into the first namespace and the other end into the second.
+    - `ip link set <vethA> netns <ns1>`
+    - `ip link set <vethB> netns <ns2>`
+  - 3.Configure: Assign IP addresses on the same subnet to the interfaces within their respective namespaces and bring them up.
+    - e.g., `<vethA>` gets `10.0.0.1/24` in `ns1`, and `<vethB>` gets `10.0.0.2/24` in `ns2`.
+
+Packets sent out of one end of the veth pair instantly arrive at the other end, enabling direct Layer 2 (Ethernet) communication and, consequently, ping (Layer 3) functionality between the two isolated namespaces.
+
+</details>
+
+<details>
+<summary><b><i>267.What are cgroups?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+cgroups (Control Groups) is a Linux kernel feature that organizes processes hierarchically and allocates or limits system resources—such as CPU, memory, disk I/O, and network bandwidth—to those groups of processes.
+
+</details>
+
+<details>
+<summary><b><i>268.Explain Process Descriptor and Task Structure</i></b></summary>
 
 - `task_struct` (Process Descriptor) is a large data structure that contains hundreds of fields, providing the kernel with a complete picture of the process's current state and resources.
  
 - The Task Structure refers to the way all active task_struct entries are logically organized by the kernel. The kernel typically manages these descriptors in a doubly linked circular list to allow for quick iteration over all running processes and to facilitate process scheduling and management.
 
-**_269.What are the differences between threads and processes?_**
+</details>
+
+<details>
+<summary><b><i>269.What are the differences between threads and processes?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - A Process is an isolated, heavy-weight instance of a program execution, complete with its own dedicated virtual memory space, resources, and Process ID (PID). Context switching between processes is slower due to the overhead of changing memory maps, but their isolation provides robust fault tolerance.
 
 - A Thread is a light-weight unit of execution within a process. Threads belonging to the same process share the parent process's memory space, code, and resources (like file descriptors), but maintain their own stack and registers. This sharing allows for faster creation, quicker context switching, and easier communication between threads.
 
-**_270.Explain Kernel Threads_**
+</details>
 
-- Kernel Threads are special threads that run entirely in kernel space and are not tied to any specific user-space process. They are managed by the kernel and perform tasks critical to the OS.
+<details>
+<summary><b><i>270.Explain Kernel Threads</i></b></summary>
 
-**_271.What happens when socket system call is used?_**
+$\color{green}{\text{Answer}}$
 
-- When the `socket()` system call is used in Linux, the following happens:
-- 1.A request is made to the kernel to create a new network endpoint.
-- 2.The kernel creates a socket data structure internally (in kernel space) which holds all necessary information (like communication domain, type, protocol, state, and buffers).
-- 3.The kernel allocates a new, unused file descriptor number for this socket structure.
-- 4.The system call returns this new file descriptor to the calling process.
+Kernel Threads are special threads that run entirely in kernel space and are not tied to any specific user-space process. They are managed by the kernel and perform tasks critical to the OS.
 
-- This file descriptor is used by subsequent system calls (like `bind()`, `connect()`, `send()`, `recv()`) to interact with the network. Essentially, `socket()` sets up the abstract communication channel endpoint.
+</details>
 
-**_272.You executed a script and while still running, it got accidentally removed. Is it possible to restore the script while it's still running?_**
+<details>
+<summary><b><i>271.What happens when socket system call is used?</i></b></summary>
 
-- It is possible to restore a script while it's still running if it has been accidentally removed. The running script process still has the code in memory. You can use the /proc filesystem to retrieve the content of the running script.
-- 1.Find the Process ID by running ``` ps aux | grep yourscriptname.sh ``` Replace yourscriptname.sh with your script name.
-- 2.Once you have the PID, you can access the script's memory through the /proc filesystem. The script will be available at /proc//fd/, where is the process ID of the running script. Typically, the script's file descriptor is 0 or 1.
+$\color{green}{\text{Answer}}$
 
-- You can copy the script content to a new file using the cp command:
+When the `socket()` system call is used in Linux, the following happens:
+  - 1.A request is made to the kernel to create a new network endpoint.
+  - 2.The kernel creates a socket data structure internally (in kernel space) which holds all necessary information (like communication domain, type, protocol, state, and buffers).
+  - 3.The kernel allocates a new, unused file descriptor number for this socket structure.
+  - 4.The system call returns this new file descriptor to the calling process.
 
-- `cp /proc/<PID>/fd/0 /path_to_restore_your_file/yourscriptname.sh`
+This file descriptor is used by subsequent system calls (like `bind()`, `connect()`, `send()`, `recv()`) to interact with the network. Essentially, `socket()` sets up the abstract communication channel endpoint.
 
-- Replace with the actual PID of the script and
-- `/path_to_restore_your_file/yourscriptname.sh` with the path where you want to restore the script.
+</details>
 
-**_273.What is the difference between MemFree and MemAvailable in /proc/meminfo?_**
+<details>
+<summary><b><i>272.You executed a script and while still running, it got accidentally removed. Is it possible to restore the script while it's still running?</i></b></summary>
 
-- MemFree - The amount of unused physical RAM in your system
-- MemAvailable - The amount of available memory for new workloads (without pushing system to use swap) based on MemFree, Active(file), Inactive(file), and SReclaimable.
+$\color{green}{\text{Answer}}$
 
-**_274.What is the difference between paging and swapping?_**
+It is possible to restore a script while it's still running if it has been accidentally removed. The running script process still has the code in memory. You can use the /proc filesystem to retrieve the content of the running script.
+1.Find the Process ID by running ``` ps aux | grep yourscriptname.sh ``` Replace yourscriptname.sh with your script name.
+2.Once you have the PID, you can access the script's memory through the /proc filesystem. The script will be available at /proc//fd/, where is the process ID of the running script. Typically, the script's file descriptor is 0 or 1.
+
+You can copy the script content to a new file using the cp command:
+
+  - `cp /proc/<PID>/fd/0 /path_to_restore_your_file/yourscriptname.sh`
+
+Replace with the actual PID of the script and
+  - `/path_to_restore_your_file/yourscriptname.sh` with the path where you want to restore the script.
+
+</details>
+
+<details>
+<summary><b><i>273.What is the difference between MemFree and MemAvailable in /proc/meminfo?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+- `MemFree` - The amount of unused physical RAM in your system
+- `MemAvailable` - The amount of available memory for new workloads (without pushing system to use swap) based on MemFree, Active(file), Inactive(file), and SReclaimable.
+
+</details>
+
+<details>
+<summary><b><i>274.What is the difference between paging and swapping?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - Paging is a fundamental technique used in modern Linux Virtual Memory systems. It involves moving small, fixed-size chunks of a process's address space, called pages (typically 4KB), between RAM and disk (specifically, the swap space). Paging is frequent and enables Demand Paging, where only the necessary pages are loaded into memory, allowing a program to run even if only part of it is in RAM.
 
 - Swapping (in its traditional sense) refers to moving the entire address space of an inactive process out of RAM and onto the disk to free up a large contiguous block of memory. This operation is much slower and less granular than paging. While the term "swapping" is still often used informally to describe moving pages to the swap space, modern Linux kernels primarily use paging mechanisms for virtual memory management, rarely performing full process swaps.
 
-**_275.Explain what is OOM killer._**
+<details>
+<summary><b><i>275.Explain what is OOM killer.</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - The OOM (Out-Of-Memory) Killer is a Linux kernel component designed to gracefully recover the system when physical memory (RAM) is exhausted.
 
@@ -2547,6 +2606,8 @@ Here the connection name is "System ens5". Let's say we want to modify settings 
 - 2.Terminate: It forcibly kills the selected process (or processes) to immediately reclaim their memory and allow the system to continue operating, preventing a full crash or deadlock.
 
 - This behavior is a defensive mechanism, prioritizing system stability over individual application uptime. Processes can be configured to resist the OOM killer using the `oom_score_adj` setting.
+
+</details>
 
 ## Distributions
 
