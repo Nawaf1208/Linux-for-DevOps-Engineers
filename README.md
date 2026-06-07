@@ -2246,7 +2246,7 @@ $\color{green}{\text{Answer}}$
 
 A superuser, or root user, is the administrative account in Linux, possessing unrestricted system privileges.
 
-- It is fundamentally different from a regular user in the following ways:
+It is fundamentally different from a regular user in the following ways:
   - Permissions: The superuser (UID 0) can bypass standard file and directory permissions (DAC), allowing it to read, write, or execute any file and perform any system-wide changes (installing software, configuring networks, managing all users).
   - Regular users have restricted permissions, primarily limited to their own home directory and files, and must use tools like sudo to temporarily gain root privileges for administrative tasks.
 
