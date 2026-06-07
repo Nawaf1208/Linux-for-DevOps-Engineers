@@ -2239,122 +2239,219 @@ Nginx, Apache httpd.
 
 ## Users and Group
 
-**_201.What is a "superuser" (or root user)? How is it different from regular users?_**
+<details>
+<summary><b><i>201.What is a "superuser" (or root user)? How is it different from regular users?</i></b></summary>
 
-- A superuser, or root user, is the administrative account in Linux, possessing unrestricted system privileges.
+$\color{green}{\text{Answer}}$
+
+A superuser, or root user, is the administrative account in Linux, possessing unrestricted system privileges.
 
 - It is fundamentally different from a regular user in the following ways:
   - Permissions: The superuser (UID 0) can bypass standard file and directory permissions (DAC), allowing it to read, write, or execute any file and perform any system-wide changes (installing software, configuring networks, managing all users).
   - Regular users have restricted permissions, primarily limited to their own home directory and files, and must use tools like sudo to temporarily gain root privileges for administrative tasks.
- 
-**_202.How do you create users? Where user information is stored?_**
 
-- Command to create users is `useradd`
-- Syntax: `useradd [options] Username`
-- There are 2 configuration files, which stores users information
-- 1.`/etc/passwd` - Users information like, username, shell etc is stored in this file
-- 2.`/etc/shadow` - Users password is stored in encrypted format
+</details>
 
-**_203.Which file stores information about groups?_**
+<details>
+<summary><b><i>202.How do you create users? Where user information is stored?</i></b></summary>
 
-- `/etc/groups` file stores the group name, group ID, usernames which are in secondary group.
+$\color{green}{\text{Answer}}$
 
-**_204.How do you change/set the password of a user?_**
+Command to create users is `useradd`
+  - Syntax: `useradd [options] Username`
 
-- `passwd <username>` is the command to set/change password of a user.
+There are 2 configuration files, which stores users information
+  - 1.`/etc/passwd` - Users information like, username, shell etc is stored in this file
+  - 2.`/etc/shadow` - Users password is stored in encrypted format
 
-**_205.Which file stores users passwords? Is it visible for everyone?_**
+</details>
 
-- `/etc/shadow` file holds the passwords of the users in encrypted format. NO, it is only visible to the root user
+<details>
+<summary><b><i>203.Which file stores information about groups?</i></b></summary>
 
-**_206.Do you know how to create a new user without using adduser/useradd command?_**
+$\color{green}{\text{Answer}}$
 
-- YES, we can create new user by manually adding an entry in the `/etc/passwd` file.
-- For example, if we need to create a user called john.
-  - Step 1: Add an entry to `/etc/passwd` file, so user gets created.
-    - `echo "john:x:2001:2001::/home/john:/bin/bash" >> /etc/passwd`
-  - Step 2: Add an entry to `/etc/group` file, because every user belong to the primary group that has same name as the username.
-    - `echo "john:x:2001:" >> /etc/group`
-  - Step 3: Verify if the user got created
-    - `id john`
-   
-**_207.What information is stored in /etc/passwd? explain each field_**
+`/etc/groups` file stores the group name, group ID, usernames which are in secondary group.
 
-- `/etc/passwd` is a configuration file, which contains users information. Each entry in this file has, 7 fields,
+</details>
 
-- `username:password:UID:GID:Comment:home directory:shell`
+<details>
+<summary><b><i>204.How do you change/set the password of a user?</i></b></summary>
 
-- `username` - The name of the user.
+$\color{green}{\text{Answer}}$
 
-- `password` - This field is actually a placeholder of the password field. Due to security concerns, this field does not contain the password, just a placeholder (x) to the encrypted password stored in /etc/shadow file.
+`passwd <username>` is the command to set/change password of a user.
 
-- `UID` - User ID of the user.
+</details>
 
-- `GID` - Group ID
+<details>
+<summary><b><i>205.Which file stores users passwords? Is it visible for everyone?</i></b></summary>
 
-- `Comment` - This field is to provide description about the user.
+$\color{green}{\text{Answer}}$
 
-- `home directory` - Abousulte path of the user's home directory. This directory gets created once the user is added.
+`/etc/shadow` file holds the passwords of the users in encrypted format. NO, it is only visible to the root user
+
+</details>
+
+<details>
+<summary><b><i>206.Do you know how to create a new user without using adduser/useradd command?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+YES, we can create new user by manually adding an entry in the `/etc/passwd` file.
+
+For example, if we need to create a user called john.
+
+1. Add an entry to `/etc/passwd` file, so user gets created.
+  - `echo "john:x:2001:2001::/home/john:/bin/bash" >> /etc/passwd`
+2. Add an entry to `/etc/group` file, because every user belong to the primary group that has same name as the username.
+  - `echo "john:x:2001:" >> /etc/group`
+3. Verify if the user got created
+  - `id john`
+
+</details>
+
+<details>
+<summary><b><i>207.What information is stored in /etc/passwd? explain each field</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+`/etc/passwd` is a configuration file, which contains users information. Each entry in this file has, 7 fields,
+
+`username:password:UID:GID:Comment:home directory:shell`
+
+`username` - The name of the user.
+
+`password` - This field is actually a placeholder of the password field. Due to security concerns, this field does not contain the password, just a placeholder (x) to the encrypted password stored in /etc/shadow file.
+
+`UID` - User ID of the user.
+
+`GID` - Group ID
+
+`Comment` - This field is to provide description about the user.
+
+`home directory` - Abousulte path of the user's home directory. This directory gets created once the user is added.
   
-- `shell` - This field contains the absolute path of the shell that will be used by the respective user.
+`shell` - This field contains the absolute path of the shell that will be used by the respective user.
 
-**_208.How to add a new user to the system without providing him the ability to log-in into the system?_**
+</details>
 
-- `adduser user_name --shell=/bin/false --no-create-home` You can also add a user and then edit /etc/passwd.
+<details>
+<summary><b><i>208.How to add a new user to the system without providing him the ability to log-in into the system?</i></b></summary>
 
-**_208.How to switch to another user? How to switch to the root user?_**
+$\color{green}{\text{Answer}}$
 
-- `su` command. Use `su -` to switch to root
+`adduser user_name --shell=/bin/false --no-create-home` You can also add a user and then edit /etc/passwd.
 
-**_209.What is the UID the root user? What about a regular user?_**
+</details>
+
+<details>
+<summary><b><i>208.How to switch to another user? How to switch to the root user?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+`su` command. Use `su -` to switch to root
+
+</details>
+
+<details>
+<summary><b><i>209.What is the UID the root user? What about a regular user?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - UID of root user is 0
 - Default values of UID_MIN and UID_MAX in `/etc/login.defs` `UID_MIN` is `1000` `UID_MAX` is `60000`
 
 - Actually, we can change this value. But UID < 1000 are reserved for system accounts. Therefore, as per the default configuration, for regular user UID starts from `1000`.
 
-**_210.What can you do if you lost/forogt the root password?_**
+</details>
 
-- Re-install the OS IS NOT the right answer
+<details>
+<summary><b><i>210.What can you do if you lost/forogt the root password?</i></b></summary>
 
-**_211.What is /etc/skel?_**
+$\color{green}{\text{Answer}}$
 
-- `/etc/skel` is a directory, that contains files or directories, so when a new user is created, these files/directories created under `/etc/skel` will be copied to user's home directory.
+Re-install the OS IS NOT the right answer
 
-**_212.How to see a list of who logged-in to the system?_**
+</details>
 
-- Using the `last` command.
+<details>
+<summary><b><i>211.What is /etc/skel?</i></b></summary>
 
-**_213.Explain what each of the following commands does:_**
-- **_1.useradd_** -> Command for creating new users
-- **_2.usermod_** -> Modify the users setting
-- **_3.whoami_** -> Outputs, the username that we are currently logged in 
-- **_4.id_**  Prints the User ID (UID), Group ID (GID)
+$\color{green}{\text{Answer}}$
 
-**_214.You run grep $(whoami) /etc/passwd but the output is empty. What might be a possible reason for that?_**
+`/etc/skel` is a directory, that contains files or directories, so when a new user is created, these files/directories created under `/etc/skel` will be copied to user's home directory.
+
+</details>
+
+<details>
+<summary><b><i>212.How to see a list of who logged-in to the system?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Using the `last` command.
+
+</details>
+
+<details>
+<summary><b><i>213.Explain what each of the following commands does:</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+  
+1.useradd -> Command for creating new users
+2.usermod -> Modify the users setting
+3.whoami -> Outputs, the username that we are currently logged in 
+4.id -> Prints the User ID (UID), Group ID (GID)
+
+</details>
+
+<details>
+<summary><b><i>214.You run grep $(whoami) /etc/passwd but the output is empty. What might be a possible reason for that?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - The user you are using isn't defined locally but originates from services like LDAP.
 - You can verify with: `getent passwd`
 
+</details>
+
 ## Hardware
 
-**_215.Where can you find information on the processor (like number of CPUs)?_**
+<details>
+<summary><b><i>215.Where can you find information on the processor (like number of CPUs)?</i></b></summary>
 
-- `/proc/cpuinfo`
+$\color{green}{\text{Answer}}$
 
-- You can also use nproc for number of processors
+`/proc/cpuinfo`
 
-**_216.How can you print information on the BIOS, motherboard, processor and RAM?_**
+</details>
 
-- `dmidecoode`
+<details>
+<summary><b><i>216.How can you print information on the BIOS, motherboard, processor and RAM?</i></b></summary>
 
-**_217.How can you print all the information on connected block devices in your system?_**
+$\color{green}{\text{Answer}}$
 
-- `lsblk`
+`dmidecoode`
 
-**_218.True or False? In user space, applications don't have full access to hardware resources_**
+</details>
 
-- True. Only in kernel space they have full access to hardware resources.
+<details>
+<summary><b><i>217.How can you print all the information on connected block devices in your system?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+`lsblk`
+
+</details>
+
+<details>
+<summary><b><i>218.True or False? In user space, applications don't have full access to hardware resources</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+True. Only in kernel space they have full access to hardware resources.
+
+</details>
 
 ## Namespaces
 
