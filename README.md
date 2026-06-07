@@ -2889,46 +2889,68 @@ The shell figures out, using the PATH variable, where the executable of the comm
 
 ## Filesystem & Files
 
-**_257.How to create a file of a certain size?_**
+<details>
+<summary><b><i>257.How to create a file of a certain size?</i></b></summary>
 
-- There are a couple of ways to do that:
+There are a couple of ways to do that:
   - dd if=/dev/urandom of=new_file.txt bs=2MB count=1
   - truncate -s 2M new_file.txt
   - fallocate -l 2097152 new_file.txt
- 
-**_258.What does the following block do?:_**
-- **_`open("/my/file") = 5`_**
-- **_`read(5, "file content")`_**
 
-- These system calls are reading the file `/my/file` and 5 is the file descriptor number.
+</details>
 
-**_259.Describe three different ways to remove a file (or its content)_**
-
-- `rm filename`: Removes the file (inode and data blocks) from the filesystem entirely. This is the standard, permanent deletion command.
+<details>
+<summary><b><i>258.What does the following block do?:
   
-- `truncate -s 0 filename`: Removes the content of the file (sets its size to 0 bytes) while keeping the file and its metadata (inode) intact.
+`open("/my/file") = 5`
+`read(5, "file content")`
+
+</i></b></summary>
+
+These system calls are reading the file `/my/file` and 5 is the file descriptor number.
+
+</details>
+
+<details>
+<summary><b><i>259.Describe three different ways to remove a file (or its content)</i></b></summary>
+
+`rm filename`: Removes the file (inode and data blocks) from the filesystem entirely. This is the standard, permanent deletion command.
   
-- `> filename` (Shell redirection): Removes the content of the file (truncates it) by redirecting null output into it. Similar to `truncate -s 0`, it keeps the file and its metadata.
+`truncate -s 0 filename`: Removes the content of the file (sets its size to 0 bytes) while keeping the file and its metadata (inode) intact.
+  
+`> filename` (Shell redirection): Removes the content of the file (truncates it) by redirecting null output into it. Similar to `truncate -s 0`, it keeps the file and its metadata.
 
-**_260.What is the difference between a process and a thread?_**
+</details>
 
-- A Process is an independent, heavyweight execution of a program with its own dedicated, isolated virtual memory address space and resources (file descriptors, process ID - PID).
+<details>
+<summary><b><i>260.What is the difference between a process and a thread?</i></b></summary>
 
-- A Thread is a lightweight unit of execution within a process. Threads belonging to the same process share the process's memory space (code, data, and heap) and resources, but each has its own independent stack, registers, and Thread ID (LWP in Linux).
+A Process is an independent, heavyweight execution of a program with its own dedicated, isolated virtual memory address space and resources (file descriptors, process ID - PID).
 
-**_261.What is context switch?_**
+A Thread is a lightweight unit of execution within a process. Threads belonging to the same process share the process's memory space (code, data, and heap) and resources, but each has its own independent stack, registers, and Thread ID (LWP in Linux).
 
-- From wikipedia: a context switch is the process of storing the state of a process or thread, so that it can be restored and resume execution at a later point.
+</details>
 
-**_262.You found there is a server with high CPU load but you didn't find a process with high CPU. How is that possible?_**
+<details>
+<summary><b><i>261.What is context switch?</i></b></summary>
 
-- This is possible due to Interrupt Handling (IRQs) or Kernel Activity:
-  - 1.Interrupt Overload: A device (like a network card or storage controller) is generating a massive number of interrupts (IRQs). The CPU spends significant time executing the Kernel's interrupt handlers to service these events. Tools like top or ps report this time under the si (software interrupts) or ni (hardware interrupts) CPU usage fields, but it's not attributed to a specific user-space process.
+From wikipedia: a context switch is the process of storing the state of a process or thread, so that it can be restored and resume execution at a later point.
+
+</details>
+
+<details>
+<summary><b><i>262.You found there is a server with high CPU load but you didn't find a process with high CPU. How is that possible?</i></b></summary>
+
+This is possible due to Interrupt Handling (IRQs) or Kernel Activity:
+
+1.Interrupt Overload: A device (like a network card or storage controller) is generating a massive number of interrupts (IRQs). The CPU spends significant time executing the Kernel's interrupt handlers to service these events. Tools like top or ps report this time under the si (software interrupts) or ni (hardware interrupts) CPU usage fields, but it's not attributed to a specific user-space process.
     
-  - 2.Kernel Threads/Activity: The Kernel itself is busy with tasks (e.g., memory management, heavy I/O handling, scheduling) performed by kernel threads or core kernel routines. While some tools show this as sy (system time), it may not appear under a normal user-space process list.
+2.Kernel Threads/Activity: The Kernel itself is busy with tasks (e.g., memory management, heavy I/O handling, scheduling) performed by kernel threads or core kernel routines. While some tools show this as sy (system time), it may not appear under a normal user-space process list.
     
-  - 3.Short-Lived Processes: Many processes are starting, executing, and terminating very rapidly, causing high load but making it difficult for periodic monitoring tools to catch any single process with sustained high CPU.
- 
+3.Short-Lived Processes: Many processes are starting, executing, and terminating very rapidly, causing high load but making it difficult for periodic monitoring tools to catch any single process with sustained high CPU.
+
+</details>
+
 ## Advanced Networking
 
 <details>
