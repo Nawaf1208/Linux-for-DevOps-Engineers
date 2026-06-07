@@ -2181,6 +2181,8 @@ dnf provides /usr/bin/git
 <details>
 <summary><b><i>195.What can you find in /etc/services?</i></b></summary>
 
+$\color{green}{\text{Answer}}$
+
 The file `/etc/services` is a plain text configuration file in Linux that acts as a local database mapping well-known service names to their corresponding port numbers and transport protocols (TCP or UDP).
 
 </details>
@@ -2188,15 +2190,18 @@ The file `/etc/services` is a plain text configuration file in Linux that acts a
 <details>
 <summary><b><i>196.How to make sure a Service starts automatically after a reboot or crash?</i></b></summary>
 
+$\color{green}{\text{Answer}}$
+
 - Depends on the init system.
 
 - Systemd:  `systemctl enable [service_name]`  System V:  `update-rc.d [service_name]`  and add this line  `id:5678:respawn:/bin/sh /path/to/app`  to `/etc/inittab` Upstart: add Upstart init script at /etc/init/service.conf
-
 
 </details>
 
 <details>
 <summary><b><i>197.You run ssh 127.0.0.1 but it fails with "connection refused". What could be the problem?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - 1.SSH server is not installed
 - 2.SSH server is not running
@@ -2205,6 +2210,8 @@ The file `/etc/services` is a plain text configuration file in Linux that acts a
 
 <details>
 <summary><b><i>198.How to print the shared libraries required by a certain program? What is it useful for?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - To print the shared libraries required by a certain program in Linux, you use the ldd command (List Dynamic Dependencies).
 
@@ -2215,12 +2222,16 @@ The file `/etc/services` is a plain text configuration file in Linux that acts a
 <details>
 <summary><b><i>199.What is CUPS?</i></b></summary>
 
+$\color{green}{\text{Answer}}$
+
 CUPS stands for Common Unix Printing System. It is a modular printing system that allows a computer running Linux to act as a print server. It is the standard printing service used by nearly all modern Linux distributions.
 
 </details>
 
 <details>
 <summary><b><i>200.What types of web servers are you familiar with?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 Nginx, Apache httpd.
 
