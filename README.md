@@ -2039,22 +2039,30 @@ $\color{green}{\text{Answer}}$
 $\color{green}{\text{Answer}}$
 
 1.Find the connection name:
-  - `# nmcli con show`
-  - `NAME         UUID                                  TYPE      DEVICE`
-  - `System ens5  8126c120-a964-e959-ff98-ac4973344505  ethernet  ens5`
-  - `System eth0  5fb06bd0-0bb0-7ffb-45f1-d6edd65f3e03  ethernet  --`
+  ```Linux
+  # nmcli con show
+  NAME         UUID                                  TYPE      DEVICE
+  System ens5  8126c120-a964-e959-ff98-ac4973344505  ethernet  ens5
+  System eth0  5fb06bd0-0bb0-7ffb-45f1-d6edd65f3e03  ethernet  --
+  ```
 
 Here the connection name is "System ens5". Let's say we want to modify settings for this connection.
 
 2.Modify the connection to use 8.8.8.8 as DNS server:
-  - `# nmcli con mod "System ens5" ipv4.dns "8.8.8.8"`
+  ```Linux
+  # nmcli con mod "System ens5" ipv4.dns "8.8.8.8"
+  ```
 
 3.We need to reactivate the connection for the change to take effect:
-  - `nmcli con up "System ens5"`
+  ```Linux
+  nmcli con up "System ens5"
+  ```
 
 4.Verify our settings once more:
-  - `cat /etc/resolv.conf`
-  - `nmcli -f ipv4.dns con show "System ens5"`
+  ```Linux
+  cat /etc/resolv.conf
+  nmcli -f ipv4.dns con show "System ens5"
+  ```
 
 </details>
 
