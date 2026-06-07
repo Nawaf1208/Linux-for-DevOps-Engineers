@@ -2905,6 +2905,7 @@ There are a couple of ways to do that:
 <summary><b><i>258.What does the following block do?:
   
 `open("/my/file") = 5`
+
 `read(5, "file content")`
 
 </i></b></summary>
