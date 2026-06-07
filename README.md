@@ -2510,12 +2510,16 @@ $\color{green}{\text{Answer}}$
 
 True
 
+</details>
+
 <details>
 <summary><b><i>224.True or False? It's not possible to have a root user with ID 0 in child user namespaces</i></b></summary>
 
 $\color{green}{\text{Answer}}$
 
 False. In every child user namespace, it's possible to have a separate root user with uid of 0.
+
+</details>
 
 <details>
 <summary><b><i>225.What time namespaces are used for?</i></b></summary>
