@@ -2720,6 +2720,8 @@ $\color{green}{\text{Answer}}$
 
 The kernel notifies the parent by sending the SIGCHLD to the parent.
 
+</details>
+
 <details>
 <summary><b><i>242.How the waitpid() is different from wait()?</i></b></summary>
 
@@ -2772,6 +2774,8 @@ Listing files (reading directory contents) is typically accomplished in Linux us
   - `close()`: Closes the directory file descriptor.
 
 In standard C programming, the `readdir()` function (part of the C library) is the wrapper that internally uses the `getdents()` system call to read and format the directory information for the user program.
+
+</details>
 
 <details>
 <summary><b><i>247.What system calls are used for creating a new process?</i></b></summary>
