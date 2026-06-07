@@ -2701,32 +2701,52 @@ This behavior is a defensive mechanism, prioritizing system stability over indiv
 
 ## Distributions
 
-**_276.What is a Linux distribution?_**
+<details>
+<summary><b><i>276.What is a Linux distribution?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - A Linux Distribution (Distro) is a complete, ready-to-use version of the Linux operating system.
 
 - It consists of the Linux kernel combined with an extensive collection of GNU utilities (like the shell, file tools), system software (like `systemd`), libraries, and usually an installer, a package manager (like `apt` or `dnf`), and a specific set of desktop environments or applications.
 
-**_277.What linux distributions are you familiar with?_**
+</details>
 
-- Some of the most well-known distributions I can discuss include:
+<details>
+<summary><b><i>277.What linux distributions are you familiar with?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Some of the most well-known distributions I can discuss include:
   - Enterprise/Stability: Red Hat Enterprise Linux (RHEL), CentOS, Oracle Linux, and Debian.
   - User-Friendly/Desktop: Ubuntu, Fedora, Linux Mint, and Manjaro.
   - Security/Specialized: Kali Linux, Tails, and Alpine.
   - Minimal/Containerized: Alpine and CoreOS/Fedora CoreOS.
- 
-**_278.What are the components of a Linux distribution?_**
+
+</details>
+
+<details>
+<summary><b><i>278.What are the components of a Linux distribution?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - Kernel
 - Utilities
 - Services
 - Software/Packages Management
 
+</details>
+
 ## Sed
 
-**_279.Using sed, extract the date from the following line: `201.7.19.90 - - [05/Jun/1985:13:42:99 +0000] "GET /site HTTP/1.1" 200 32421`_**
+<details>
+<summary><b><i>279.Using sed, extract the date from the following line: `201.7.19.90 - - [05/Jun/1985:13:42:99 +0000] "GET /site HTTP/1.1" 200 32421`</i></b></summary>
 
-- `echo $line | sed 's/.*\[//g;s/].*//g;s/:.*//g'`
+$\color{green}{\text{Answer}}$
+
+`echo $line | sed 's/.*\[//g;s/].*//g;s/:.*//g'`
+
+</details>
 
 ## Misc
 
