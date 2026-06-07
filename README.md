@@ -2455,43 +2455,81 @@ True. Only in kernel space they have full access to hardware resources.
 
 ## Namespaces
 
-**_219.What types of namespaces are there in Linux?_**
+<details>
+<summary><b><i>219.What types of namespaces are there in Linux?</i></b></summary>
 
-- Process ID namespaces: these namespaces include independent set of process IDs
-- Mount namespaces: Isolation and control of mountpoints
-- Network namespaces: Isolates system networking resources such as routing table, interfaces, ARP table, etc.
-- UTS namespaces: Isolate host and domains
-- IPC namespaces: Isolates interprocess communications
-- User namespaces: Isolate user and group IDs
-- Time namespaces: Isolates time machine
+$\color{green}{\text{Answer}}$
 
-**_220.True or False? In every PID (Process ID) namespace the first process assigned with the process id number 1_**
+`Process ID namespaces`: these namespaces include independent set of process IDs
 
-- True. Inside the namespace it's PID 1 while to the parent namespace the PID is a different one.
+`Mount namespaces`: Isolation and control of mountpoints
 
-**_221.True or False? In a child PID namespace all processes are aware of parent PID namespace and processes and the parent PID namespace has no visibility of child PID namespace processes_**
+`Network namespaces`: Isolates system networking resources such as routing table, interfaces, ARP table, etc.
 
-- False. The opposite is true. Parent PID namespace is aware and has visibility of processes in child PID namespace and child PID namespace has no visibility as to what is going on in the parent PID namespace.
+`UTS namespaces`: Isolate host and domains
 
-**_222.rue or False? By default, when creating two separate network namespaces, a ping from one namespace to another will work fine_**
+`IPC namespaces`: Isolates interprocess communications
 
-- False. Network namespace has its own interfaces and routing table. There is no way (without creating a bridge for example) for one network namespace to reach another.
+`User namespaces`: Isolate user and group IDs
 
-**_223.True or False? With UTS namespaces, processes may appear as if they run on different hosts and domains while running on the same host_**
+`Time namespaces`: Isolates time machine
 
-- True
+</details>
 
-**_224.True or False? It's not possible to have a root user with ID 0 in child user namespaces_**
+<details>
+<summary><b><i>220.True or False? In every PID (Process ID) namespace the first process assigned with the process id number 1</i></b></summary>
 
-- False. In every child user namespace, it's possible to have a separate root user with uid of 0.
+$\color{green}{\text{Answer}}$
 
-**_225.What time namespaces are used for?_**
+True. Inside the namespace it's PID 1 while to the parent namespace the PID is a different one.
 
-- In time namespaces processes can use different system time.
+</details>
+
+<details>
+<summary><b><i>221.True or False? In a child PID namespace all processes are aware of parent PID namespace and processes and the parent PID namespace has no visibility of child PID namespace processes</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+False. The opposite is true. Parent PID namespace is aware and has visibility of processes in child PID namespace and child PID namespace has no visibility as to what is going on in the parent PID namespace.
+
+</details>
+
+<details>
+<summary><b><i>222.rue or False? By default, when creating two separate network namespaces, a ping from one namespace to another will work fine</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+False. Network namespace has its own interfaces and routing table. There is no way (without creating a bridge for example) for one network namespace to reach another.
+
+</details>
+
+<details>
+<summary><b><i>223.True or False? With UTS namespaces, processes may appear as if they run on different hosts and domains while running on the same host</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+True
+
+<details>
+<summary><b><i>224.True or False? It's not possible to have a root user with ID 0 in child user namespaces</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+False. In every child user namespace, it's possible to have a separate root user with uid of 0.
+
+<details>
+<summary><b><i>225.What time namespaces are used for?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+In time namespaces processes can use different system time.
+
+</details>
 
 ## Virtualization
 
-**_226.What virtualization solutions are available for Linux?_**
+<details>
+<summary><b><i>226.What virtualization solutions are available for Linux?</i></b></summary>
 
 - KVM
 - XEN
@@ -2499,13 +2537,21 @@ True. Only in kernel space they have full access to hardware resources.
 - Linux-VServer
 - User-mode Linux
 
-**_227.What is KVM?_**
+</details>
 
-- Is an open source virtualization technology used to operate on x86 hardware.
+<details>
+<summary><b><i>227.What is KVM?</i></b></summary>
 
-**_228.What is Libvirt?_**
+Is an open source virtualization technology used to operate on x86 hardware.
 
-- It's an open source collection of software used to manage virtual machines. It can be used with: KVM, Xen, LXC and others. It's also called Libvirt Virtualization API.
+</details>
+
+<details>
+<summary><b><i>228.What is Libvirt?</i></b></summary>
+
+It's an open source collection of software used to manage virtual machines. It can be used with: KVM, Xen, LXC and others. It's also called Libvirt Virtualization API.
+
+</details>
 
 ## AWK
 
