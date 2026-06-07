@@ -2565,186 +2565,323 @@ It's an open source collection of software used to manage virtual machines. It c
 
 ## AWK
 
-**_229.What the awk command does? Have you used it? What for?_**
+<details>
+<summary><b><i>229.What the awk command does? Have you used it? What for?</i></b></summary>
 
-- From Wikipedia: "AWK is domain-specific language designed for text processing and typically used as a data extraction and reporting tool"
+$\color{green}{\text{Answer}}$
 
-**_230.How to print the 4th column in a file?_**
+AWK is domain-specific language designed for text processing and typically used as a data extraction and reporting tool
 
-- `awk '{print $4}'` file
+</details>
 
-**_231.How to print every line that is longer than 79 characters?_**
+<details>
+<summary><b><i>230.How to print the 4th column in a file?</i></b></summary>
 
-- `awk 'length($0) > 79'` file
+$\color{green}{\text{Answer}}$
 
-**_232.What the lsof command does? Have you used it? What for?_**
+`awk '{print $4}'` file
 
-- The lsof command in Unix-like operating systems stands for "LiSt Open Files." Its primary function is to report a comprehensive list of all files that are currently open by active processes on the system.
+</details>
 
-- I have used `lsof` for powerful troubleshooting and system monitoring
+<details>
+<summary><b><i>231.How to print every line that is longer than 79 characters?</i></b></summary>
 
-- Used it for:
+$\color{green}{\text{Answer}}$
+
+`awk 'length($0) > 79'` file
+
+</details>
+
+<details>
+<summary><b><i>232.What the lsof command does? Have you used it? What for?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+The lsof command in Unix-like operating systems stands for "LiSt Open Files." Its primary function is to report a comprehensive list of all files that are currently open by active processes on the system.
+
+I have used `lsof` for powerful troubleshooting and system monitoring
+
+Used it for:
   - Finding which process is using a file
   - Identifying network connections and ports
   - Listing files opened by a specific user or command
   - Finding deleting files still held open
- 
-**_233.What is the difference between find and locate?_**
 
-- Use locate when you need a fast, system-wide search for a file by name and you don't need real-time accuracy (e.g., finding a configuration file you know exists).
+</details>
+
+<details>
+<summary><b><i>233.What is the difference between find and locate?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Use locate when you need a fast, system-wide search for a file by name and you don't need real-time accuracy (e.g., finding a configuration file you know exists).
   - Example: `locate httpd.conf`
-- Use find when you need real-time accuracy or when you need to search based on complex criteria other than just the name.
-  - Example : `find /var/log -size +10M -mtime -7`
- 
-**_234.How a user process performs a privileged operation, such as reading from the disk?_**
 
-- Using system calls
+Use find when you need real-time accuracy or when you need to search based on complex criteria other than just the name.
+  - Example : `find /var/log -size +10M -mtime -7`
+
+</details>
+
+<details>
+<summary><b><i>234.How a user process performs a privileged operation, such as reading from the disk?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Using system calls
+
+</details>
 
 ## System Call
 
-**_235.What is a system call? What system calls are you familiar with?_**
+<details>
+<summary><b><i>235.What is a system call? What system calls are you familiar with?</i></b></summary>
 
-- A system call is the programmatic way a computer program requests a service from the operating system kernel.
+$\color{green}{\text{Answer}}$
 
-- Some common Linux system calls are:
-  - Process Control:
-    - `fork()`: Creates a new process (a child process).
-    - `execve()`: Replaces the current process image with a new program.
-    - `wait()`/`wait4()`: Waits for a child process to terminate or stop.
-    - `exit()`: Terminates the calling process.
-    - `getpid()`: Gets the process ID of the current process
+A system call is the programmatic way a computer program requests a service from the operating system kernel.
+
+Some common Linux system calls are:
+
+Process Control:
+  - `fork()`: Creates a new process (a child process).
+  - `execve()`: Replaces the current process image with a new program.
+  - `wait()`/`wait4()`: Waits for a child process to terminate or stop.
+  - `exit()`: Terminates the calling process.
+  - `getpid()`: Gets the process ID of the current process
       
-  - File Management (I/O):
-    - `open()`/`openat()`: Opens or creates a file, returning a file descriptor.
-    - `read()`: Reads data from a file descriptor.
-    - `write()`: Writes data to a file descriptor.
-    - `close()`: Closes a file descriptor.
-    - `lseek()`: Changes the file offset (position) of a file descriptor.
+File Management (I/O):
+  - `open()`/`openat()`: Opens or creates a file, returning a file descriptor.
+  - `read()`: Reads data from a file descriptor.
+  - `write()`: Writes data to a file descriptor.
+  - `close()`: Closes a file descriptor.
+  - `lseek()`: Changes the file offset (position) of a file descriptor.
 
-  - Memory Management:
-    - `brk()` / `sbrk()`: Changes the program's data segment size (heap allocation).
-    - `mmap()`: Maps files or devices into memory.
+Memory Management:
+  - `brk()` / `sbrk()`: Changes the program's data segment size (heap allocation).
+  - `mmap()`: Maps files or devices into memory.
 
-  - Device Management / Information:
-    - `ioctl()`: Performs device-specific I/O operations.
-    - `stat()` / `fstat()` / `lstat()`: Gets file or file descriptor metadata (e.g., size, permissions).
-    - `time()` / `gettimeofday()`: Gets the system time.
-   
-**_236.How a program executes a system call?_**
+Device Management / Information:
+  - `ioctl()`: Performs device-specific I/O operations.
+  - `stat()` / `fstat()` / `lstat()`: Gets file or file descriptor metadata (e.g., size, permissions).
+  - `time()` / `gettimeofday()`: Gets the system time.
 
-- A program executes a trap instruction. The instruction jump into the kernel while raising the privileged level to kernel space.
-- Once in kernel space, it can perform any privileged operation
-- Once it's finished, it calls a "return-from-trap" instruction which returns to user space while reducing back the privilege level to user space.
+</details>
 
-**_237.Explain the fork() system call._**
+<details>
+<summary><b><i>236.How a program executes a system call?</i></b></summary>
 
-- `fork()` is used for creating a new process. It does so by cloning the calling process but the child process has its own PID and any memory locks, I/O operations and semaphores are not inherited.
+$\color{green}{\text{Answer}}$
 
-**_238.What is the return value of fork()?_**
+A program executes a trap instruction. The instruction jump into the kernel while raising the privileged level to kernel space. Once in kernel space, it can perform any privileged operation. Once it's finished, it calls a "return-from-trap" instruction which returns to user space while reducing back the privilege level to user space.
+
+</details>
+
+<details>
+<summary><b><i>237.Explain the fork() system call.</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+`fork()` is used for creating a new process. It does so by cloning the calling process but the child process has its own PID and any memory locks, I/O operations and semaphores are not inherited.
+
+</details>
+
+<details>
+<summary><b><i>238.What is the return value of fork()?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - On success, the PID of the child process in parent and 0 in child process
 - On error, -1 in the parent
 
-**_239.Name one reason for fork() to fail._**
+</details>
 
-- Not enough memory to create a new process
+<details>
+<summary><b><i>239.Name one reason for fork() to fail.</i></b></summary>
 
-**_240.Why do we need the wait() system call?_**
+$\color{green}{\text{Answer}}$
 
-- `wait()` is used by a parent process to wait for the child process to finish execution. If wait is not used by a parent process then a child process might become a zombie process.
+Not enough memory to create a new process
 
-**_241.How the kernel notifies the parent process about child process termination?_**
+</details>
 
-- The kernel notifies the parent by sending the SIGCHLD to the parent.
+<details>
+<summary><b><i>240.Why do we need the wait() system call?</i></b></summary>
 
-**_242.How the waitpid() is different from wait()?_**
+$\color{green}{\text{Answer}}$
+
+`wait()` is used by a parent process to wait for the child process to finish execution. If wait is not used by a parent process then a child process might become a zombie process.
+
+</details>
+
+<details>
+<summary><b><i>241.How the kernel notifies the parent process about child process termination?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+The kernel notifies the parent by sending the SIGCHLD to the parent.
+
+<details>
+<summary><b><i>242.How the waitpid() is different from wait()?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - The `waitpid()` is a non-blocking version of the wait() function.
 - It also supports using library routine (e.g. `system()`) to wait a child process without messing up with other children processes for which the process has not waited.
 
-**_243.True or False? The wait() system call won't return until the child process has run and exited._**
+</details>
 
-- True in most cases though there are cases where wait() returns before the child exits.
+<details>
+<summary><b><i>243.True or False? The wait() system call won't return until the child process has run and exited.</i></b></summary>
 
-**_244.Explain the exec() system call._**
+$\color{green}{\text{Answer}}$
 
-- It transforms the current running program into another program.
-- Given the name of an executable and some arguments, it loads the code and static data from the specified executable and overwrites its current code segment and current static code data. After initializing its memory space (like stack and heap) the OS runs the program passing any arguments as the argv of that process.
+True in most cases though there are cases where wait() returns before the child exits.
 
-**_245.True or False? A successful call to exec() never returns._**
+</details>
 
-- True
-- Since a successful exec replace the current process, it can't return anything to the process that made the call.
+<details>
+<summary><b><i>244.Explain the exec() system call.</i></b></summary>
 
-**_246.What system call is used for listing files?_**
+$\color{green}{\text{Answer}}$
 
-- There is no single system call that directly returns a list of files.
+It transforms the current running program into another program.
 
-- Listing files (reading directory contents) is typically accomplished in Linux using a sequence of operations based on these system calls:
+Given the name of an executable and some arguments, it loads the code and static data from the specified executable and overwrites its current code segment and current static code data. After initializing its memory space (like stack and heap) the OS runs the program passing any arguments as the argv of that process.
+
+</details>
+
+<details>
+<summary><b><i>245.True or False? A successful call to exec() never returns.</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+True, since a successful exec replace the current process, it can't return anything to the process that made the call.
+
+</details>
+
+<details>
+<summary><b><i>246.What system call is used for listing files?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+There is no single system call that directly returns a list of files.
+
+Listing files (reading directory contents) is typically accomplished in Linux using a sequence of operations based on these system calls:
   - `open()` or `openat()`: Opens the directory, returning a file descriptor.
   - `getdents()` (Get Directory Entries): This is the primary system call used to read raw directory entries from the file descriptor obtained in step 1.
-  - close(): Closes the directory file descriptor.
+  - `close()`: Closes the directory file descriptor.
 
-- In standard C programming, the `readdir()` function (part of the C library) is the wrapper that internally uses the `getdents()` system call to read and format the directory information for the user program.
+In standard C programming, the `readdir()` function (part of the C library) is the wrapper that internally uses the `getdents()` system call to read and format the directory information for the user program.
 
-**_247.What system calls are used for creating a new process?_**
+<details>
+<summary><b><i>247.What system calls are used for creating a new process?</i></b></summary>
 
-- `fork()`, `exec()` and the `wait()` system call is also included in this workflow.
+$\color{green}{\text{Answer}}$
 
-**_248.What execve() does?_**
+`fork()`, `exec()` and the `wait()` system call is also included in this workflow.
 
-- Executes a program. The program is passed as a filename (or path) and must be a binary executable or a script.
+</details>
 
-**_249.What is the return value of malloc?_**
+<details>
+<summary><b><i>248.What execve() does?</i></b></summary>
 
-- The return value of `malloc()` is a pointer of type `void*` (a "pointer to void").
+$\color{green}{\text{Answer}}$
+
+Executes a program. The program is passed as a filename (or path) and must be a binary executable or a script.
+
+</details>
+
+<details>
+<summary><b><i>249.What is the return value of malloc?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+The return value of `malloc()` is a pointer of type `void*` (a "pointer to void").
   - This pointer points to the beginning of the block of newly allocated, uninitialized memory on the heap.
   - The `void*` type indicates that it's a generic pointer; it must be cast to the appropriate data type before being used (e.g., to `int*` or `struct Node*`).
-- On Failure:
-- If the requested memory allocation fails (e.g., due to insufficient memory), `malloc()` returns a null pointer ($\text{NULL}$). Always check for a $\text{NULL}$ return value.
 
-**_250.Explain the pipe() system call. What does it used for?_**
+On Failure:
+  - If the requested memory allocation fails (e.g., due to insufficient memory), `malloc()` returns a null pointer ($\text{NULL}$). Always check for a $\text{NULL}$ return value.
 
-- "Pipes provide a unidirectional interprocess communication channel. A pipe has a read end and a write end. Data written to the write end of a pipe can be read from the read end of the pipe. A pipe is created using pipe(2), which returns two file descriptors, one referring to the read end of the pipe, the other referring to the write end."
+</details>
 
-**_251.What happens when you execute `ls -l`?_**
+<details>
+<summary><b><i>250.Explain the pipe() system call. What does it used for?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+"Pipes provide a unidirectional interprocess communication channel. A pipe has a read end and a write end. Data written to the write end of a pipe can be read from the read end of the pipe. A pipe is created using pipe(2), which returns two file descriptors, one referring to the read end of the pipe, the other referring to the write end."
+
+</details>
+
+<details>
+<summary><b><i>251.What happens when you execute `ls -l`?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - Shell reads the input using getline() which reads the input file stream and stores into a buffer as a string
 - The buffer is broken down into tokens and stored in an array this way: {"ls", "-l", "NULL"}
 - Shell checks if an expansion is required (in case of ls *.c)
 - Once the program in memory, its execution starts. First by calling readdir()
 
-- Notes:
+Notes:
   - `getline()` originates in GNU C library and used to read lines from input stream and stores those lines in the buffer
- 
-**_252.What happens when you execute ls -l *.log?_**
 
-- When you execute ls -l *.log:
+</details>
+
+<details>
+<summary><b><i>252.What happens when you execute ls -l *.log?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+When you execute ls -l *.log:
   - Shell Expansion: The shell (e.g., Bash) first replaces `*.log` with the list of all matching filenames (e.g., `a.log`, `b.log`) in the current directory.
   - Command Execution: The shell executes the `ls` command with the `-l` (long listing) option and the expanded file list as arguments.
   - Result: `ls` uses system calls (like `stat()`) to retrieve and print detailed metadata (permissions, size, owner, time) for each file ending in `.log`.
- 
-**_253.What readdir() system call does?_**
 
-- The function `readdir()` (part of the C standard library, not a direct system call itself) is used to read the contents of a directory.
+</details>
 
-- It repeatedly calls the underlying  `getdents()` system call to return information about the next file or directory entry (name, inode number, etc.) within a directory stream.
+<details>
+<summary><b><i>253.What readdir() system call does?</i></b></summary>
 
-**_254.What exactly the command alias x=y does?_**
+$\color{green}{\text{Answer}}$
 
-- The command `alias x=y` creates a temporary shortcut where the string `x` is replaced with the string `y` by the shell (e.g., Bash) whenever x is executed as the first word of a command.
+The function `readdir()` (part of the C standard library, not a direct system call itself) is used to read the contents of a directory.
+
+It repeatedly calls the underlying  `getdents()` system call to return information about the next file or directory entry (name, inode number, etc.) within a directory stream.
+
+</details>
+
+<details>
+<summary><b><i>254.What exactly the command alias x=y does?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+The command `alias x=y` creates a temporary shortcut where the string `x` is replaced with the string `y` by the shell (e.g., Bash) whenever x is executed as the first word of a command.
   - `x` is the alias name (the new command).
   - `y` is the replacement string (the actual command or commands to execute).
 
-- This alias only persists for the current shell session.
+This alias only persists for the current shell session.
 
-**_255.Why running a new program is done using the fork() and exec() system calls? why a different API wasn't developed where there is one call to run a new program?_**
+</details>
 
-- This way provides a lot of flexibility. It allows the shell for example, to run code after the call to `fork()` but before the call to `exec()`. Such code can be used to alter the environment of the program it about to run.
+<details>
+<summary><b><i>255.Why running a new program is done using the fork() and exec() system calls? why a different API wasn't developed where there is one call to run a new program?</i></b></summary>
 
-**_256.Describe shortly what happens when you execute a command in the shell._**
+$\color{green}{\text{Answer}}$
 
-- The shell figures out, using the PATH variable, where the executable of the command resides in the filesystem. It then calls `fork()` to create a new child process for running the command. Once the fork was executed successfully, it calls a variant of `exec()` to execute the command and finally, waits the command to finish using `wait()`. When the child completes, the shell returns from `wait()` and prints out the prompt again.
+This way provides a lot of flexibility. It allows the shell for example, to run code after the call to `fork()` but before the call to `exec()`. Such code can be used to alter the environment of the program it about to run.
+
+</details>
+
+<details>
+<summary><b><i>256.Describe shortly what happens when you execute a command in the shell.</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+The shell figures out, using the PATH variable, where the executable of the command resides in the filesystem. It then calls `fork()` to create a new child process for running the command. Once the fork was executed successfully, it calls a variant of `exec()` to execute the command and finally, waits the command to finish using `wait()`. When the child completes, the shell returns from `wait()` and prints out the prompt again.
+
+</details>
 
 ## Filesystem & Files
 
