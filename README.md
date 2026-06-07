@@ -1982,55 +1982,81 @@ It is added in Linux by using the brctl utility (from the bridge-utils package, 
 
 ## DNS
 
-**_179.How to check what is the hostname of the system?_**
+<details>
+<summary><b><i>179.How to check what is the hostname of the system?</i></b></summary>
 
-- `cat /etc/hostname`
+$\color{green}{\text{Answer}}$
+
+`cat /etc/hostname`
 
 - You can also run `hostnamectl` or `hostname` but that might print only a temporary hostname. The one in the file is the permanent one.
 
-**_180.What the file /etc/resolv.conf is used for? What does it include?_**
+</details>
+
+<details>
+<summary><b><i>180.What the file /etc/resolv.conf is used for? What does it include?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - The file /etc/resolv.conf configures the Linux system's DNS resolver for hostname-to-IP-address translation.
 - It primarily includes the nameserver directives, which list the IP addresses of the DNS servers to query, and the search directive, which specifies domain names to append to hostnames for unqualified lookups.
 
-**_181.What commands are you using for performing DNS queries (or troubleshoot DNS related issues)?_**
+</details>
 
-- You can specify one or more of the following:
+<details>
+<summary><b><i>181.What commands are you using for performing DNS queries (or troubleshoot DNS related issues)?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+You can specify one or more of the following:
   - dig
   - host
   - nslookup
+
+ </details>
  
-**_182.You run dig codingshell.com and get the following result:_**
-- **_`ANSWER SECTION:`_**
-- **_`codingshell.com.	3515	IN	A	185.199.109.153`_**
-- **_`What is the meaning of the number 3515?`_**
-- **_What is the meaning of the number 3515?_**
+<details>
+<summary><b><i>182.You run dig codingshell.com and get the following result:
+
+```Linux
+codingshell.com.	3515	IN	A	185.199.109.153
+```
+
+What is the meaning of the number 3515?
+
+</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 - This is the TTL. When you lookup for an address using a domain/host name, your OS is performing DNS resolution by contacting DNS name servers to get the IP address of the host/domain you are looking for.
 - When you get a reply, this reply in cached in your OS for a certain period of time. This is period of time is also known as TTL and this is the meaning of 3515 number, it will be cached for 3515 seconds before removed from the cache and during that period of time, you'll get the value from the cache instead of asking DNS name servers for the address again.
 
-**_183.How can we modify the network connection via `nmcli` command, to use `8.8.8.8` as a DNS server?_**
+</details>
 
-- 1.Find the connection name:
-- `# nmcli con show`
-- `NAME         UUID                                  TYPE      DEVICE`
-- `System ens5  8126c120-a964-e959-ff98-ac4973344505  ethernet  ens5`
-- `System eth0  5fb06bd0-0bb0-7ffb-45f1-d6edd65f3e03  ethernet  --`
+<details>
+<summary><b><i>183.How can we modify the network connection via `nmcli` command, to use `8.8.8.8` as a DNS server?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+1.Find the connection name:
+  - `# nmcli con show`
+  - `NAME         UUID                                  TYPE      DEVICE`
+  - `System ens5  8126c120-a964-e959-ff98-ac4973344505  ethernet  ens5`
+  - `System eth0  5fb06bd0-0bb0-7ffb-45f1-d6edd65f3e03  ethernet  --`
 
 Here the connection name is "System ens5". Let's say we want to modify settings for this connection.
 
-- 2.Modify the connection to use 8.8.8.8 as DNS server:
+2.Modify the connection to use 8.8.8.8 as DNS server:
+  - `# nmcli con mod "System ens5" ipv4.dns "8.8.8.8"`
 
-- `# nmcli con mod "System ens5" ipv4.dns "8.8.8.8"`
+3.We need to reactivate the connection for the change to take effect:
+  - `nmcli con up "System ens5"`
 
-- 3.We need to reactivate the connection for the change to take effect:
+4.Verify our settings once more:
+  - `cat /etc/resolv.conf`
+  - `nmcli -f ipv4.dns con show "System ens5"`
 
-- `nmcli con up "System ens5"`
-
-- 4.Verify our settings once more:
-
-- `cat /etc/resolv.conf`
-- `nmcli -f ipv4.dns con show "System ens5"`
+</details>
 
 ## Packaging
 
