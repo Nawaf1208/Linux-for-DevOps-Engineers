@@ -2535,6 +2535,8 @@ In time namespaces processes can use different system time.
 <details>
 <summary><b><i>226.What virtualization solutions are available for Linux?</i></b></summary>
 
+$\color{green}{\text{Answer}}$
+
 - KVM
 - XEN
 - VirtualBox
@@ -2546,12 +2548,16 @@ In time namespaces processes can use different system time.
 <details>
 <summary><b><i>227.What is KVM?</i></b></summary>
 
+$\color{green}{\text{Answer}}$
+
 Is an open source virtualization technology used to operate on x86 hardware.
 
 </details>
 
 <details>
 <summary><b><i>228.What is Libvirt?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 It's an open source collection of software used to manage virtual machines. It can be used with: KVM, Xen, LXC and others. It's also called Libvirt Virtualization API.
 
