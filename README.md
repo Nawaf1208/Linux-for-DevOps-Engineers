@@ -1926,12 +1926,16 @@ $\color{green}{\text{Answer}}$
 
 `ss -tn`
 
+</details>
+
 <details>
 <summary><b><i>175.How to trigger neighbor discovery in IPv6?</i></b></summary>
 
 $\color{green}{\text{Answer}}$
 
 One way would be `ping6 ff02::1`
+
+</details>
 
 <details>
 <summary><b><i>176.What is network interface bonding and do you know how it's performed in Linux?</i></b></summary>  
