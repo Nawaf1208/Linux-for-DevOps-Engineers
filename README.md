@@ -2398,10 +2398,10 @@ Using the `last` command.
 
 $\color{green}{\text{Answer}}$
   
-1.useradd -> Command for creating new users
-2.usermod -> Modify the users setting
-3.whoami -> Outputs, the username that we are currently logged in 
-4.id -> Prints the User ID (UID), Group ID (GID)
+1. useradd -> Command for creating new users
+2. usermod -> Modify the users setting
+3. whoami -> Outputs, the username that we are currently logged in 
+4. id -> Prints the User ID (UID), Group ID (GID)
 
 </details>
 
