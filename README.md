@@ -2892,6 +2892,8 @@ The shell figures out, using the PATH variable, where the executable of the comm
 <details>
 <summary><b><i>257.How to create a file of a certain size?</i></b></summary>
 
+$\color{green}{\text{Answer}}$
+
 There are a couple of ways to do that:
   - dd if=/dev/urandom of=new_file.txt bs=2MB count=1
   - truncate -s 2M new_file.txt
@@ -2907,12 +2909,16 @@ There are a couple of ways to do that:
 
 </i></b></summary>
 
+$\color{green}{\text{Answer}}$
+
 These system calls are reading the file `/my/file` and 5 is the file descriptor number.
 
 </details>
 
 <details>
 <summary><b><i>259.Describe three different ways to remove a file (or its content)</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 `rm filename`: Removes the file (inode and data blocks) from the filesystem entirely. This is the standard, permanent deletion command.
   
@@ -2925,6 +2931,8 @@ These system calls are reading the file `/my/file` and 5 is the file descriptor 
 <details>
 <summary><b><i>260.What is the difference between a process and a thread?</i></b></summary>
 
+$\color{green}{\text{Answer}}$
+
 A Process is an independent, heavyweight execution of a program with its own dedicated, isolated virtual memory address space and resources (file descriptors, process ID - PID).
 
 A Thread is a lightweight unit of execution within a process. Threads belonging to the same process share the process's memory space (code, data, and heap) and resources, but each has its own independent stack, registers, and Thread ID (LWP in Linux).
@@ -2934,12 +2942,16 @@ A Thread is a lightweight unit of execution within a process. Threads belonging 
 <details>
 <summary><b><i>261.What is context switch?</i></b></summary>
 
+$\color{green}{\text{Answer}}$
+
 From wikipedia: a context switch is the process of storing the state of a process or thread, so that it can be restored and resume execution at a later point.
 
 </details>
 
 <details>
 <summary><b><i>262.You found there is a server with high CPU load but you didn't find a process with high CPU. How is that possible?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
 
 This is possible due to Interrupt Handling (IRQs) or Kernel Activity:
 
